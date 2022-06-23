@@ -2,12 +2,10 @@
 
 using namespace std; 
 
-const int n = 6; 
+const int MAX = 1e5; 
 
-//array para o qual se quer formar a segment tree
-int arr[n] = {3, 4, 1, 7, 8, 1}; 
-
-vector<int> A(4*n); 
+int A[4*MAX]; 
+int arr[MAX]; 
 
 int makeSeg(int i, int j, int idx) {
     if (i == j) {
@@ -21,25 +19,57 @@ int makeSeg(int i, int j, int idx) {
     return a + b; 
 } 
 
-int getSum(int i, int j, int ci, int cj) {
-    if (i == ci && cj == j) {
+int getSum(int i, int j, int ci, int cj, int idx) {
+    if (i > j) {
+        return 0; 
+    } 
+    else if (i == ci && j == cj) {
+        return A[idx];  
+    } 
 
     int mid = (ci + cj)/2; 
-    return getSum(i, j, ci, min(cj, mid)) + getSum(i, j, max(ci, mid+1), cj);   
+    return getSum(i, min(j, mid), ci, mid, idx*2) + getSum(max(i, mid+1), j, mid+1, cj, idx*2 + 1);  
 
 }
 
+void update(int v, int ci, int cj, int pos, int nv) {
+    if (ci == cj) {
+        A[v] = nv; 
+    } 
+    else {
+        int mid = (ci + cj)/2; 
+        if (pos <= mid) {
+            update(v*2, ci, mid, pos, nv); 
+        } 
+        else {
+            update(v*2+1, mid+1, cj, pos, nv); 
+        } 
+        A[v] = A[v*2] + A[v*2+1]; 
+    } 
+} 
+
+
+//test
 int main() {
     ios_base::sync_with_stdio(0); 
     cin.tie(0); 
 
+    int n; cin >> n; 
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i]; 
+    } 
+
     makeSeg(0, n-1, 1); 
     for (int i = 0; i < n; i++) {
-        cout << arr[i] << ", "; 
+        for (int j = i+1; j < n; j++) {
+            cout << getSum(i, j, 0, n-1, 1) << endl;
+        } 
     } 
-    cout << endl;
-    for (int i = 1; i < A.size(); i++) {
-        cout << A[i] << ", "; 
+    cout << "====================" << endl;
+    update(1, 0, n-1, 2, 100); 
+    for (int i = 0; i < n; i++) {
+        for (int j = i+1; j < n; j++) {
+            cout << getSum(i, j, 0, n-1, 1) << endl;
+        } 
     } 
-    cout << endl;
 } 
