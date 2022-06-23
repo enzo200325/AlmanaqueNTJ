@@ -14,14 +14,6 @@ int main() {
         D[i] = INT_MAX; 
     } 
 
-    int nodes, ed; cin >> nodes >> ed;
-
-    for(int i = 0; i < ed; i++){
-        int a,b,c; cin >> a >> b >> c;
-        Adj[a].push_back({c,b});
-        Adj[b].push_back({c,a});
-    }
-
     int begin_from = 1;
 
     pq.push({0, begin_from}); 
@@ -36,9 +28,4 @@ int main() {
             } 
         } 
     } 
-
-    for(int i = 1; i < nodes; i++){
-        cout << D[i] << ' ';
-    }
-    cout << endl;
 } 
