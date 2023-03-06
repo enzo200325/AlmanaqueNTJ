@@ -1,17 +1,14 @@
 #include <bits/stdc++.h>
-
 using namespace std; 
 
 typedef long long ll; 
+const int MOD = 1e9+7;
 
-ll binpow(ll a, ll b) {
+ll binpow(ll b, ll e) {
     int res = 1; 
-    while (b > 0) {
-        if (b & 1) {
-            res *= a; 
-        } 
-        b >>= 1; 
-        a *= a; 
+    for (; e; e>>=1) {
+        if (e&1) res = res*b % MOD;
+        b = b*b % MOD;
     } 
     return res; 
 } 
