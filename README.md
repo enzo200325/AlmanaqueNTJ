@@ -29,18 +29,6 @@ Aqui está o `.pdf` do Almanaque.
 ## CONTEÚDOS
 
 
-### DP
-
-
-### Problemas
-
-
-### Matematica
-
-
-### Primitivas
-
-
 ### Estruturas
 
 - [Fenwick Tree](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/codigos/Estruturas/fenwick.cpp)
@@ -48,9 +36,6 @@ Aqui está o `.pdf` do Almanaque.
 ### Grafos
 
 - [Bridges e Edge Biconnected Components](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/codigos/Grafos/bridges.cpp)
-
-### Strings
-
 
 ### Extra
 
