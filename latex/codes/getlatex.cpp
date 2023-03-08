@@ -125,6 +125,7 @@ int main(int argc, char** argv) {
 
 		string dir(entry->d_name);
 		if (dir == "Extra") continue;
+		cout << "\\clearpage" << endl;
 		printa_section(dir);
 
 		vector<pair<string, string>> files;
