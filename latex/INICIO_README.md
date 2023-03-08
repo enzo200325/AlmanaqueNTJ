@@ -22,7 +22,7 @@ sudo apt install texlive-full
 sudo apt install rubber
 ```
 
-#### Pasta `pdf`
+## Pasta `pdf`
 
 Aqui está o `.pdf` do Almanaque.
 
