@@ -3,11 +3,11 @@
 Repositório de códigos para programação competitiva do NTJ com latex copiado da UFMG.
 Ainda em desenvolvimento.
 
-## Pasta `codigos`
+### Pasta `codigos`
 
 Todas as implementações estão nessa pasta.
 
-## Pasta `latex`
+### Pasta `latex`
 
 Aqui estão os scripts necessários para gerar o latex e o pdf do Almanaque, com base nos códigos que estão na pasta `codigos`. O arquivo `almanaque.tex` também está nessa pasta.
 
@@ -22,11 +22,11 @@ sudo apt install texlive-full
 sudo apt install rubber
 ```
 
-## Pasta `pdf`
+### Pasta `pdf`
 
 Aqui está o `.pdf` do Almanaque.
 
-## CONTEUDOS
+## CONTEÚDOS
 
 
 ### DP

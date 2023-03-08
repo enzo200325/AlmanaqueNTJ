@@ -39,7 +39,7 @@ int main(int argc, char** argv) {
 	struct dirent* entry = nullptr;
 	DIR* dp = nullptr;
 	dp = opendir(path.c_str());
-	cout << "## CONTEUDOS\n\n";
+	cout << "## CONTEÚDOS\n\n";
 	if (dp != nullptr) while (entry = readdir(dp)) {
 		if (entry->d_name[0] == '.') continue;
 		if (entry->d_type != DT_DIR) continue;
