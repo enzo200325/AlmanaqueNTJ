@@ -19,5 +19,7 @@ set showcmd
 inoremap {} {}<Left><Return><Up><End><Return> 
 
 " bracket translator
-nnoremap ç :g/{/normal kJx<return>
-nnoremap Ç :g/{/normal $xo{<return>
+
+" por cedilha
+nnoremap c :g/{/normal kJx<return>
+nnoremap C :g/{/normal $xo{<return>

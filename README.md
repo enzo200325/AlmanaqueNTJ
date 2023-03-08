@@ -39,4 +39,5 @@ Aqui está o `.pdf` do Almanaque.
 
 ### Extra
 
+- [t number](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/codigos/Extra/vimrc)
 - [Templace C++](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/codigos/Extra/template.cpp)
