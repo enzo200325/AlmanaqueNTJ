@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.3.7)  8 MAR 2023 00:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.3.7)  8 MAR 2023 00:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -662,24 +662,21 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [2]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 266.
  [3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 352.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 266.
 
-[4
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 352.
- (./biblioteca.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 352.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 352.
+(./biblioteca.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 266.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 266.
 Package rerunfilecheck Info: File `biblioteca.out' has not changed.
-(rerunfilecheck)             Checksum: 543D9080754CFEC2903FA4494866C6B6;587.
+(rerunfilecheck)             Checksum: 0BAF09343BBA0DA89E11C586536212F8;549.
  ) 
 Here is how much of TeX's memory you used:
- 13981 strings out of 481239
- 192575 string characters out of 5920378
- 800985 words of memory out of 5000000
- 28749 multiletter control sequences out of 15000+600000
+ 13918 strings out of 481239
+ 191541 string characters out of 5920378
+ 806985 words of memory out of 5000000
+ 28771 multiletter control sequences out of 15000+600000
  546773 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  49i,8n,99p,3263b,1985s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -690,10 +687,10 @@ m-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb
 onts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm
 -super/sfrm1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb>
 
-Output written on biblioteca.pdf (4 pages, 139871 bytes).
+Output written on biblioteca.pdf (3 pages, 137442 bytes).
 PDF statistics:
- 355 PDF objects out of 1000 (max. 8388607)
- 338 compressed objects within 4 object streams
- 212 named destinations out of 1000 (max. 500000)
- 97 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 246 PDF objects out of 1000 (max. 8388607)
+ 231 compressed objects within 3 object streams
+ 127 named destinations out of 1000 (max. 500000)
+ 89 words of extra memory for PDF output out of 10000 (max. 10000000)
 

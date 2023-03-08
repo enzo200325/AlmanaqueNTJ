@@ -1,10 +1,9 @@
-// Bridges e ebcc
+// Bridges e Edge Biconnected Components
 //
-// dfaffds
-// fsf
-// dsa
-// fadsfsad
-// f
+// Acha todas as pontes em O(n)
+// Tambem constroi a arvore condensada, mantendo
+// so as pontes como arestas e o resto comprimindo
+// em nodos
 
 const int maxn = 4e5;
 int n, m;
