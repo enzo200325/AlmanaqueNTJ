@@ -66,46 +66,6 @@ basicstyle=\ttfamily\footnotesize, % fonte
 
 %%%%%%%%%%%%%%%%%%%%
 %
-% DP
-%
-%%%%%%%%%%%%%%%%%%%%
-
-\section{DP}
-
-
-
-%%%%%%%%%%%%%%%%%%%%
-%
-% Problemas
-%
-%%%%%%%%%%%%%%%%%%%%
-
-\section{Problemas}
-
-
-
-%%%%%%%%%%%%%%%%%%%%
-%
-% Matematica
-%
-%%%%%%%%%%%%%%%%%%%%
-
-\section{Matematica}
-
-
-
-%%%%%%%%%%%%%%%%%%%%
-%
-% Primitivas
-%
-%%%%%%%%%%%%%%%%%%%%
-
-\section{Primitivas}
-
-
-
-%%%%%%%%%%%%%%%%%%%%
-%
 % Estruturas
 %
 %%%%%%%%%%%%%%%%%%%%
@@ -115,13 +75,23 @@ basicstyle=\ttfamily\footnotesize, % fonte
 \subsection{Fenwick Tree}
 \begin{lstlisting}
 // Processas queries de operacao com inverso
-// em O(log(n)) e faz updates em O(log(n))
+// Build: O(n)
+// Query: O(log(n))
+// Update: O(log(n))
 
  typedef long long ll;
  
  struct fenwick {
      vector<ll> bit;
-     fenwick (int n) { bit.assign(n+1, 0); }
+     fenwick(int n) { bit.assign(n+1, 0); }
+     fenwick(vector<ll>& v) {
+         int n = v.size();
+         bit.assign(n+1, 0);
+         for(int i = 1; i <= n; i++) bit[i] = v[i-1];
+         for(int i = 1, j = 2; i <= n; i++, j = i + (i & -i)) if(j <= n) {
+             bit[j] += bit[i];
+         }
+     }
      ll query(int i){
          ll res = 0;
          for(; i; i -= (i & -i))
@@ -223,16 +193,6 @@ basicstyle=\ttfamily\footnotesize, % fonte
  }
 \end{lstlisting}
 
-
-
-%%%%%%%%%%%%%%%%%%%%
-%
-% Strings
-%
-%%%%%%%%%%%%%%%%%%%%
-
-\section{Strings}
-
 \pagebreak
 
 
@@ -259,7 +219,6 @@ void solve(){
 int main(){
 	ios_base::sync_with_stdio(0); cin.tie(0);
 	solve();
-	return 0;
 }
 \end{lstlisting}
 
