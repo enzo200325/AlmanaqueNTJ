@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.3.7)  8 MAR 2023 00:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.3.7)  8 MAR 2023 00:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**\nonstopmode \input{biblioteca.tex}
-(./biblioteca.tex (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+**\nonstopmode \input{almanaque.tex}
+(./almanaque.tex (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
 File: size11.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
@@ -527,8 +527,8 @@ File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count314
 \l__pdf_internal_box=\box53
 )
-(./biblioteca.aux)
-\openout1 = `biblioteca.aux'.
+(./almanaque.aux)
+\openout1 = `almanaque.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
 LaTeX Font Info:    ... okay on input line 57.
@@ -548,10 +548,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 57.
 LaTeX Font Info:    ... okay on input line 57.
 \AtBeginShipoutBox=\box54
 Package hyperref Info: Link coloring OFF on input line 57.
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
-
 (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 )
@@ -564,9 +562,9 @@ LaTeX Info: Redefining \ref on input line 57.
 LaTeX Info: Redefining \pageref on input line 57.
 LaTeX Info: Redefining \nameref on input line 57.
 
-(./biblioteca.out) (./biblioteca.out)
+(./almanaque.out) (./almanaque.out)
 \@outlinefile=\write5
-\openout5 = `biblioteca.out'.
+\openout5 = `almanaque.out'.
 
 LaTeX Font Info:    Trying to load font information for U+msa on input line 57.
 
@@ -640,9 +638,9 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(./biblioteca.toc)
+(./almanaque.toc)
 \tf@toc=\write6
-\openout6 = `biblioteca.toc'.
+\openout6 = `almanaque.toc'.
 
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
 16.
@@ -666,20 +664,20 @@ Package atveryend Info: Empty hook `BeforeClearDocument' on input line 266.
  [3]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 266.
 
-(./biblioteca.aux)
+(./almanaque.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 266.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 266.
-Package rerunfilecheck Info: File `biblioteca.out' has not changed.
+Package rerunfilecheck Info: File `almanaque.out' has not changed.
 (rerunfilecheck)             Checksum: 0BAF09343BBA0DA89E11C586536212F8;549.
  ) 
 Here is how much of TeX's memory you used:
  13918 strings out of 481239
- 191541 string characters out of 5920378
- 806985 words of memory out of 5000000
+ 191522 string characters out of 5920378
+ 806980 words of memory out of 5000000
  28771 multiletter control sequences out of 15000+600000
  546773 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 49i,8n,99p,3263b,1985s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 49i,8n,99p,3262b,1985s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf/
 fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf/fonts/type1/public/c
 m-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb
@@ -687,7 +685,7 @@ m-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb
 onts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm
 -super/sfrm1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb>
 
-Output written on biblioteca.pdf (3 pages, 137442 bytes).
+Output written on almanaque.pdf (3 pages, 137442 bytes).
 PDF statistics:
  246 PDF objects out of 1000 (max. 8388607)
  231 compressed objects within 3 object streams
