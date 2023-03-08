@@ -204,53 +204,49 @@ basicstyle=\ttfamily\footnotesize, % fonte
 
 \section{Extra}
 
-\subsection{vimrc}
+\subsection{Config do Vim}
 \begin{lstlisting}
-// vimrc
+// .vimrc
 
-set number
-set nohls
-set ai
-
-set belloff=all
-
-syntax on
-filetype plugin indent on
-
-set ts=4
-set sw=4
-set expandtab
-set noshiftround
-
-set showmode
-set showcmd
-
-" bracket remap
-inoremap {} {}<Left><Return><Up><End><Return> 
-
-" bracket translator
-
-" por cedilha
-nnoremap c :g/{/normal kJx<return>
-nnoremap C :g/{/normal $xo{<return>
+ set number
+ set nohls
+ set ai
+ 
+ set belloff=all
+ 
+ syntax on
+ filetype plugin indent on
+ 
+ set ts=4
+ set sw=4
+ set expandtab
+ set noshiftround
+ 
+ set showmode
+ set showcmd
+ 
+ " bracket remap
+ inoremap {} {}<Left><Return><Up><End><Return> 
+ 
+ " bracket translator (trocar pra C cedilha)
+ nnoremap c :g/{/normal kJx<return>
+ nnoremap C :g/{/normal $xo{<return>
 \end{lstlisting}
 
-\subsection{template.cpp}
+\subsection{Template C++}
 \begin{lstlisting}
-// Templace C++
-
-#include <bits/stdc++.h>
-
-using namespace std;
-
-void solve(){
-
-}
-
-int main(){
-	ios_base::sync_with_stdio(0); cin.tie(0);
-	solve();
-}
+ #include <bits/stdc++.h>
+ 
+ using namespace std;
+ 
+ void solve(){
+ 
+ }
+ 
+ int main(){
+ 	ios_base::sync_with_stdio(0); cin.tie(0);
+ 	solve();
+ }
 \end{lstlisting}
 
 \end{document}

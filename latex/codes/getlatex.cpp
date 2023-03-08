@@ -145,8 +145,18 @@ int main(int argc, char** argv) {
 	cout << "\\pagebreak" << endl;
 	printa_section("Extra");
 	vector<pair<string, string>> files;
-	dfs(files, path + "Extra", true);
+	dfs(files, path + "Extra", false);
 
+	sort(files.begin(), files.end(), [&](auto f1, auto f2) {
+			return lower(get_name(f1.second)) < lower(get_name(f2.second));
+			});
+
+	cerr << "=== Extra ===" << endl;
+	for (auto [f, path] : files) {
+		bool printed = printa_listing(f.substr(0, f.size() - 4), path);
+		if (printed) cerr << get_name(path) << endl;
+	}
+	cerr << endl;
 	cout << "\\end{document}\n";
 	return 0;
 }

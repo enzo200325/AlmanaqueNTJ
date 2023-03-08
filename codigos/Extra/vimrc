@@ -1,4 +1,6 @@
-// Configuração do Vim
+// Config do Vim
+//
+// .vimrc
 
 set number
 set nohls
@@ -20,6 +22,6 @@ set showcmd
 " bracket remap
 inoremap {} {}<Left><Return><Up><End><Return> 
 
-" bracket translator
-nnoremap ç :g/{/normal kJx<return>
-nnoremap Ç :g/{/normal $xo{<return>
+" bracket translator (trocar pra C cedilha)
+nnoremap c :g/{/normal kJx<return>
+nnoremap C :g/{/normal $xo{<return>
