@@ -145,7 +145,7 @@ int main(int argc, char** argv) {
 	cout << "\\pagebreak" << endl;
 	printa_section("Extra");
 	vector<pair<string, string>> files;
-	dfs(files, path + "Extra", true);
+	dfs(files, path + "Extra", false);
 
 	cout << "\\end{document}\n";
 	return 0;
