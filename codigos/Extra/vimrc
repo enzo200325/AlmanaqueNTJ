@@ -1,4 +1,6 @@
 // Config do Vim
+//
+// .vimrc
 
 set number
 set nohls

@@ -1,4 +1,4 @@
-// Templace C++
+// Template C++
 
 #include <bits/stdc++.h>
 
