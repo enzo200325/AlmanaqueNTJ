@@ -48,5 +48,5 @@ Aqui está o `.pdf` do Almanaque.
 - [Rand C++](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/codigos/Extra/rand.cpp)
 - [Template de debug simples](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/codigos/Extra/debug.cpp)
 - Stress Test
-	- [Script de stress test](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/codigos/Extra/Stress Test/stress.sh)
-	- [Gerador aleatorio de inteiros em [l, r]](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/codigos/Extra/Stress Test/gen.cpp)
+	- [Script de stress test](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/codigos/Extra/Stress\ Test/stress.sh)
+	- [Gerador aleatorio de inteiros em [l, r]](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/codigos/Extra/Stress\ Test/gen.cpp)
