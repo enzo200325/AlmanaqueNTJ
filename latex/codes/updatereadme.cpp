@@ -12,6 +12,15 @@ string get_name(string file) {
 	getline(fin, line);
 	fin.close();
 	if (line[2] == ' ') return line.substr(3);
+    string temp = line.substr(2);
+    string ret;
+    for(auto c : temp){
+        if(c == ' '){
+
+        } else if ( c == '[' || c == ']' ){
+
+        }
+    }
 	return line.substr(2);
 }
 
