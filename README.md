@@ -29,6 +29,10 @@ Aqui está o `.pdf` do Almanaque.
 ## CONTEÚDOS
 
 
+### Problemas
+
+- [Kth digito na string infinita de digitos](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/codigos/Problemas/infinite_digit_string.cpp)
+
 ### Estruturas
 
 - [Fenwick Tree](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/codigos/Estruturas/fenwick.cpp)
@@ -39,5 +43,10 @@ Aqui está o `.pdf` do Almanaque.
 
 ### Extra
 
-- [Config do Vim](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/codigos/Extra/vimrc)
 - [Template C++](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/codigos/Extra/template.cpp)
+- [Config do Vim](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/codigos/Extra/vimrc)
+- [Rand C++](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/codigos/Extra/rand.cpp)
+- [Template de debug simples](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/codigos/Extra/debug.cpp)
+- Stress Test
+	- [Script de stress test](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/codigos/Extra/Stress Test/stress.sh)
+	- [Gerador aleatorio de inteiros em [l, r]](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/codigos/Extra/Stress Test/gen.cpp)
