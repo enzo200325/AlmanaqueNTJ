@@ -11,17 +11,46 @@ string get_name(string file) {
 	string line;
 	getline(fin, line);
 	fin.close();
-	if (line[2] == ' ') return line.substr(3);
-    string temp = line.substr(2);
+    if (line[2] == ' ') {
+        return line.substr(3);
+    }
+    return line.substr(2);
+}
+
+string parse(string s){
+    vector<char> dont {'/', '+', '?', '&', '#', '=', '.'};
+
+    auto in = [&] (char c){
+        for(char u : dont){
+            if(u == c) return true;
+        } return false;
+    };
+    auto hexa = [&] (int n){
+        string t;
+        while(n){
+            int r = n % 16;
+            if(r < 10){
+                t += char(r + 48);
+            } else {
+                t += char(r + 55);
+            }
+            n /= 16;
+        }
+        t += "%";
+        reverse(begin(t), end(t));
+        return t;
+    };
+
     string ret;
-    for(auto c : temp){
-        if(c == ' '){
-
-        } else if ( c == '[' || c == ']' ){
-
+    for(char c : s){
+        if(in(c)){
+            ret += c;
+        } else {
+            ret += hexa(int(c));
         }
     }
-	return line.substr(2);
+    
+    return ret;
 }
 
 void dfs(string s, int level = 0) {
@@ -35,7 +64,7 @@ void dfs(string s, int level = 0) {
 			cout << "- " << string(entry->d_name) << endl;
 			dfs(s + "/" + string(entry->d_name), level+1);
 		} else {
-			cout << "- [" << get_name(s + "/" + string(entry->d_name)) << "](" << github_link << s.substr(2) + '/' + string(entry->d_name) << ")" << endl;
+			cout << "- [" << get_name(s + "/" + string(entry->d_name)) << "](" << github_link << parse(s.substr(2)) + '/' + parse(string(entry->d_name)) << ")" << endl;
 		}
 	}
 }
