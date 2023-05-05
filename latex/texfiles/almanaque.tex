@@ -306,11 +306,22 @@ basicstyle=\ttfamily\footnotesize, % fonte
  cat correctAnswer
 \end{lstlisting}
 
+\subsection{Script pra rodar C++}
+\begin{lstlisting}
+// chmod +x run
+// ./run A.cpp
+
+ #!/bin/bash
+ g++ --std=c++20 -Wall -O2 -fsanitize=address,undefined $1 && ./a.out
+\end{lstlisting}
+
 \subsection{Template C++}
 \begin{lstlisting}
  #include <bits/stdc++.h>
+ #define endl '\n'
  
  using namespace std;
+ typedef long long ll;
  
  void solve(){
  
