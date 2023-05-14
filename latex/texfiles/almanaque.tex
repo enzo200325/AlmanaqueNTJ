@@ -67,6 +67,38 @@ basicstyle=\ttfamily\footnotesize, % fonte
 
 %%%%%%%%%%%%%%%%%%%%
 %
+% Problemas
+%
+%%%%%%%%%%%%%%%%%%%%
+
+\section{Problemas}
+
+\subsection{Kth digito na string infinita de digitos}
+\begin{lstlisting}
+// Retorna qual o numero e qual o algarismo do Kth digito 
+// na string infinita dos numeros naturais (12345678910111213...)
+// Complexidade: O(log_10(k))
+
+ pair<ll,ll> kthdig(ll k){
+     ll qtd = 1, num_alg = 1, base = 1;
+     while(1){
+         ll add = (9 * base) * num_alg;
+         if(qtd + add < k){
+             qtd += add;
+         } else break;
+         base *= 10, num_alg++;
+     }
+     ll algarismo = (k - qtd) % num_alg;
+     ll numero = (k - qtd) / num_alg + base;
+     return {numero, algarismo};
+ }
+\end{lstlisting}
+
+\clearpage
+
+
+%%%%%%%%%%%%%%%%%%%%
+%
 % Estruturas
 %
 %%%%%%%%%%%%%%%%%%%%
@@ -89,8 +121,9 @@ basicstyle=\ttfamily\footnotesize, % fonte
          int n = v.size();
          bit.assign(n+1, 0);
          for(int i = 1; i <= n; i++) bit[i] = v[i-1];
-         for(int i = 1, j = 2; i <= n; i++, j = i + (i & -i)) if(j <= n) {
-             bit[j] += bit[i];
+         for(int i = 1; i <= n; i++) {
+             int j = i + (i & -i);
+             if(j <= n) bit[j] += bit[i];
          }
      }
      ll query(int i){
@@ -235,20 +268,83 @@ basicstyle=\ttfamily\footnotesize, % fonte
  nnoremap C :g/{/normal $xo{<return>
 \end{lstlisting}
 
+\subsection{Gerador aleatorio de inteiros em [l, r]}
+\begin{lstlisting}
+ mt19937 rng(chrono::steady_clock::now() .time_since_epoch().count());
+ 
+ ll uniform(ll l, ll r){
+ 	uniform_int_distribution<int> uid(l, r);
+ 	return uid(rng);
+ }
+\end{lstlisting}
+
+\subsection{Rand C++}
+\begin{lstlisting}
+ mt19937 rng(chrono::steady_clock::now() .time_since_epoch().count());
+\end{lstlisting}
+
+\subsection{Script de stress test}
+\begin{lstlisting}
+ set -e
+ g++ code.cpp -o code
+ g++ brute.cpp -o brute
+ g++ gen.cpp -o gen
+ 
+ for((i = 1; ; ++i)); do
+     ./gen > input_file
+     ./code < input_file > myAnswer
+     ./brute < input_file > correctAnswer
+     diff myAnswer correctAnswer > /dev/null || break
+     echo "Passed test: "  $i
+ done
+ 
+ echo "WA on the following test:"
+ cat input_file
+ echo "Your answer is:"
+ cat myAnswer
+ echo "Correct answer is:"
+ cat correctAnswer
+\end{lstlisting}
+
+\subsection{Script pra rodar C++}
+\begin{lstlisting}
+// chmod +x run
+// ./run A.cpp
+
+ #!/bin/bash
+ g++ --std=c++20 -Wall -O2 -fsanitize=address,undefined $1 && ./a.out
+\end{lstlisting}
+
 \subsection{Template C++}
 \begin{lstlisting}
  #include <bits/stdc++.h>
+ #define endl '\n'
  
  using namespace std;
+ typedef long long ll;
  
  void solve(){
  
  }
  
- int main(){
+ signed main(){
  	ios_base::sync_with_stdio(0); cin.tie(0);
  	solve();
  }
+\end{lstlisting}
+
+\subsection{Template de debug simples}
+\begin{lstlisting}
+ void _print() { }
+ template<typename T, typename... U> void _print(T a, U... b) {
+     if(sizeof... (b)){
+         cerr << a << ", ";
+         _print(b...);
+     } else cerr << a;
+ }
+ #define debug(x...) cerr << "[" << #x << "] = [", _print(x), cerr << "]" << endl
+ 
+ // #define debug(...)
 \end{lstlisting}
 
 \end{document}
