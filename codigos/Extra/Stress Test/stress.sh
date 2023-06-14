@@ -1,9 +1,9 @@
 // Script de stress test
 
 set -e
-g++ code.cpp -o code
-g++ brute.cpp -o brute
-g++ gen.cpp -o gen
+g++ -O2 code.cpp -o code
+g++ -O2 brute.cpp -o brute
+g++ -O2 gen.cpp -o gen
 
 for((i = 1; ; ++i)); do
     ./gen > input_file
