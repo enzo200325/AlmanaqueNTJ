@@ -2,26 +2,17 @@
 //
 // .vimrc
 
-set number
-set nohls
+set nu
 set ai
-
-set belloff=all
-
-syntax on
-filetype plugin indent on
-
 set ts=4
 set sw=4
-set expandtab
-set noshiftround
-
-set showmode
-set showcmd
-
-" bracket remap
+filetype plugin indent on
 inoremap {} {}<Left><Return><Up><End><Return> 
 
-" bracket translator (trocar pra C cedilha)
-nnoremap c :g/{/normal kJx<return>
-nnoremap C :g/{/normal $xo{<return>
+set nohls
+set belloff=all
+syntax on
+set expandtab
+set noshiftround
+set showmode
+set showcmd
