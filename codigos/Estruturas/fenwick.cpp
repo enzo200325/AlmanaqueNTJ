@@ -1,6 +1,7 @@
 // Fenwick Tree
 //
 // Processas queries de operacao com inverso
+//
 // Build: O(n)
 // Query: O(log(n))
 // Update: O(log(n))

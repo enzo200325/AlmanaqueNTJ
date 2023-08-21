@@ -40,6 +40,7 @@ Aqui está o `.pdf` do Almanaque.
 ### Grafos
 
 - [Bridges e Edge Biconnected Components](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%47%72%61%66%6F%73/%62%72%69%64%67%65%73.%63%70%70)
+- [Binary Lifting](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%47%72%61%66%6F%73/%62%69%6E%61%72%79%5F%6C%69%66%74%69%6E%67.%63%70%70)
 
 ### Extra
 
