@@ -1,6 +1,6 @@
 // Pollard Rho
 //
-// Fonte: https://github.com/ShahjalalShohag/code-library
+// Fonte: https://github.com/shahjalalshohag/code-library
 // 
 // Fatora numeros ate 8*10^18 
 // Complexidade: O(n ^ (1/4))
