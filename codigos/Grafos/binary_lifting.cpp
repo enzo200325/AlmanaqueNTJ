@@ -3,8 +3,7 @@
 // Binary Lifting (em nodos)
 //
 // Computa LCA e tambem resolve queries de operacoes
-// associativas e comutativas em caminhos. Para operacoes
-// nao comutativas, modificar funcao query ou usar HLD.
+// associativas e comutativas em caminhos.
 //
 // Build(): O(n log(n))
 // Query(): O(log(n))
