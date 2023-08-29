@@ -1,6 +1,6 @@
 // Hashing
 //
-// Hashing estático
+// Hashing estatico
 // Tambem funciona com vector
 //
 // Build: O(n)
@@ -43,7 +43,7 @@ struct Hashing {
     }
 };
 
-// Hashing dinâmico
+// Hashing dinamico
 //
 // Hash que usa uma Fenwick pra updatar
 //

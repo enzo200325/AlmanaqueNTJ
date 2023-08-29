@@ -1,4 +1,7 @@
-// Custom Hash pra unordered_map
+// Custom Hash
+//
+// Hash personalizado pra evitar colisao no unordered_map
+// Uso: map<int, int, custom_hash> mapa;
 
 struct custom_hash {
     static uint64_t splitmix64(uint64_t x) {
@@ -9,7 +12,8 @@ struct custom_hash {
     }
  
     size_t operator()(uint64_t x) const {
-        static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
+        static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().
+            time_since_epoch().count();
         return splitmix64(x + FIXED_RANDOM);
     }
 };
