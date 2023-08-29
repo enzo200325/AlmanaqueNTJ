@@ -483,8 +483,7 @@ basicstyle=\ttfamily\footnotesize, % fonte
 // Binary Lifting (em nodos)
 //
 // Computa LCA e tambem resolve queries de operacoes
-// associativas e comutativas em caminhos. Para operacoes
-// nao comutativas, modificar funcao query ou usar HLD.
+// associativas e comutativas em caminhos.
 //
 // Build(): O(n log(n))
 // Query(): O(log(n))
@@ -957,7 +956,7 @@ basicstyle=\ttfamily\footnotesize, % fonte
 
 \subsection{Pollard Rho}
 \begin{lstlisting}
-// Fonte: https://github.com/ShahjalalShohag/code-library
+// Fonte: https://github.com/shahjalalshohag/code-library
 // 
 // Fatora numeros ate 8*10^18 
 // Complexidade: O(n ^ (1/4))
@@ -1126,6 +1125,26 @@ basicstyle=\ttfamily\footnotesize, % fonte
  	uniform_int_distribution<int> uid(l, r);
  	return uid(rng);
  }
+\end{lstlisting}
+
+\subsection{Mint}
+\begin{lstlisting}
+// Inteiro automaticamente modulado
+
+ const int mod = 998244353;
+ struct Mint {
+     int val;
+     Mint(int v = 0) { val = v % mod; }
+     bool operator == (Mint o) { return val == o.val; }
+     int operator * (Mint o) { return (((ll)val * o.val) % mod); }
+     int operator + (Mint o) { return ((ll)val + o.val) % mod; }
+     int operator - (Mint o) { return ((ll)val - o.val + mod) % mod; }
+     int operator ^ (ll o) { return pwr(val, o); }
+     int pwr(Mint b, ll e) {
+         Mint res; for (res = 1; e; e >>= 1, b = b * b) if (e & 1) res = res * res;
+         return res.val;
+     }
+ };
 \end{lstlisting}
 
 \subsection{Rand C++}
