@@ -54,7 +54,7 @@ Aqui está o `.pdf` do Almanaque.
 
 - [Pollard Rho](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%4D%61%74%65%6D%61%74%69%63%61/%70%6F%6C%6C%61%72%64%72%68%6F.%63%70%70)
 - [Fast Fourier Transform](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%4D%61%74%65%6D%61%74%69%63%61/%66%66%74.%63%70%70)
-- [Crivo de Eratostenes ](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%4D%61%74%65%6D%61%74%69%63%61/%73%69%65%76%65.%63%70%70)
+- [Crivo de Eratostenes](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%4D%61%74%65%6D%61%74%69%63%61/%73%69%65%76%65.%63%70%70)
 
 ### Extra
 
