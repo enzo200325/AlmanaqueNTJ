@@ -308,6 +308,196 @@ basicstyle=\ttfamily\footnotesize, % fonte
  };
 \end{lstlisting}
 
+\subsection{KMP}
+\begin{lstlisting}
+// Fonte: https://github.com/shahjalalshohag/code-library
+//
+// String matching
+
+ #include <bits/stdc++.h>
+ using namespace std;
+ 
+ const int N = 3e5 + 9;
+ 
+ // returns the longest proper prefix array of pattern p
+ // where lps[i]=longest proper prefix which is also suffix of p[0...i]
+ vector<int> build_lps(string p) {
+ 	int sz = p.size();
+ 	vector<int> lps;
+ 	lps.assign(sz + 1, 0);
+ 	int j = 0;
+ 	lps[0] = 0;
+ 	for (int i = 1; i < sz; i++) {
+ 		while (j >= 0 && p[i] != p[j]) {
+ 			if (j >= 1) j = lps[j - 1];
+ 			else j = -1;
+ 		}
+ 		j++;
+ 		lps[i] = j;
+ 	}
+ 	return lps;
+ }
+ vector<int> ans;
+ // returns matches in vector ans in 0-indexed
+ void kmp(vector<int> lps, string s, string p) {
+ 	int psz = p.size(), sz = s.size();
+ 	int j = 0;
+ 	for (int i = 0; i < sz; i++) {
+ 		while (j >= 0 && p[j] != s[i])
+ 			if (j >= 1) j = lps[j - 1];
+ 			else j = -1;
+ 		j++;
+ 		if (j == psz) {
+ 			j = lps[j - 1];
+ 			// pattern found in string s at position i-psz+1
+ 			ans.push_back(i - psz + 1);
+ 		}
+ 		// after each loop we have j=longest common suffix of s[0..i] which is
+ 		// also prefix of p
+ 	}
+ }
+ 
+ int main() {
+ 	int i, j, k, n, m, t;
+ 	cin >> t;
+ 	while (t--) {
+ 		string s, p;
+ 		cin >> s >> p;
+ 		vector<int> lps = build_lps(p);
+ 		kmp(lps, s, p);
+ 		if (ans.empty()) cout << "Not Found\n";
+ 		else {
+ 			cout << ans.size() << endl;
+ 			for (auto x : ans) cout << x << ' ';
+ 			cout << endl;
+ 		}
+ 		ans.clear();
+ 		cout << endl;
+ 	}
+ 	return 0;
+ }
+\end{lstlisting}
+
+\subsection{Suffix Automaton}
+\begin{lstlisting}
+// Fonte: https://github.com/shahjalalshohag/code-library
+//
+// Faz coisarada
+
+ #include <bits/stdc++.h>
+ using namespace std;
+ 
+ const int N = 3e5 + 9;
+ 
+ // len -> largest string length of the corresponding endpos-equivalent class
+ // link -> longest suffix that is another endpos-equivalent class.
+ // firstpos -> 1 indexed end position of the first occurrence of the largest
+ // string of that node minlen(v) -> smallest string of node v = len(link(v)) + 1
+ // terminal nodes -> store the suffixes
+ struct SuffixAutomaton {
+ 	struct node {
+ 		int len, link, firstpos;
+ 		map<char, int> nxt;
+ 	};
+ 	int sz, last;
+ 	vector<node> t;
+ 	vector<int> terminal;
+ 	vector<long long> dp;
+ 	vector<vector<int>> g;
+ 	SuffixAutomaton() {}
+ 	SuffixAutomaton(int n) {
+ 		t.resize(2 * n);
+ 		terminal.resize(2 * n, 0);
+ 		dp.resize(2 * n, -1);
+ 		sz = 1;
+ 		last = 0;
+ 		g.resize(2 * n);
+ 		t[0].len = 0;
+ 		t[0].link = -1;
+ 		t[0].firstpos = 0;
+ 	}
+ 	void extend(char c) {
+ 		int p = last;
+ 		if (t[p].nxt.count(c)) {
+ 			int q = t[p].nxt[c];
+ 			if (t[q].len == t[p].len + 1) {
+ 				last = q;
+ 				return;
+ 			}
+ 			int clone = sz++;
+ 			t[clone] = t[q];
+ 			t[clone].len = t[p].len + 1;
+ 			t[q].link = clone;
+ 			last = clone;
+ 			while (p != -1 && t[p].nxt[c] == q) {
+ 				t[p].nxt[c] = clone;
+ 				p = t[p].link;
+ 			}
+ 			return;
+ 		}
+ 		int cur = sz++;
+ 		t[cur].len = t[last].len + 1;
+ 		t[cur].firstpos = t[cur].len;
+ 		p = last;
+ 		while (p != -1 && !t[p].nxt.count(c)) {
+ 			t[p].nxt[c] = cur;
+ 			p = t[p].link;
+ 		}
+ 		if (p == -1) t[cur].link = 0;
+ 		else {
+ 			int q = t[p].nxt[c];
+ 			if (t[p].len + 1 == t[q].len) t[cur].link = q;
+ 			else {
+ 				int clone = sz++;
+ 				t[clone] = t[q];
+ 				t[clone].len = t[p].len + 1;
+ 				while (p != -1 && t[p].nxt[c] == q) {
+ 					t[p].nxt[c] = clone;
+ 					p = t[p].link;
+ 				}
+ 				t[q].link = t[cur].link = clone;
+ 			}
+ 		}
+ 		last = cur;
+ 	}
+ 	void build_tree() {
+ 		for (int i = 1; i < sz; i++) g[t[i].link].push_back(i);
+ 	}
+ 	void build(string &s) {
+ 		for (auto x : s) {
+ 			extend(x);
+ 			terminal[last] = 1;
+ 		}
+ 		build_tree();
+ 	}
+ 	long long cnt(int i) { // number of times i-th node occurs in the string
+ 		if (dp[i] != -1) return dp[i];
+ 		long long ret = terminal[i];
+ 		for (auto &x : g[i]) ret += cnt(x);
+ 		return dp[i] = ret;
+ 	}
+ };
+ 
+ int32_t main() {
+ 	ios_base::sync_with_stdio(0);
+ 	cin.tie(0);
+ 	int t;
+ 	cin >> t;
+ 	while (t--) {
+ 		string s;
+ 		cin >> s;
+ 		int n = s.size();
+ 		SuffixAutomaton sa(n);
+ 		sa.build(s);
+ 		long long ans = 0; // number of unique substrings
+ 		for (int i = 1; i < sa.sz; i++)
+ 			ans += sa.t[i].len - sa.t[sa.t[i].link].len;
+ 		cout << ans << '\n';
+ 	}
+ 	return 0;
+ }
+\end{lstlisting}
+
 \clearpage
 
 
@@ -791,6 +981,102 @@ basicstyle=\ttfamily\footnotesize, % fonte
  }
 \end{lstlisting}
 
+\subsection{Dinic}
+\begin{lstlisting}
+// Fonte: https://github.com/shahjalalshohag/code-library
+//
+// Max Flow em O(V^3) ou O(E * sqrt(V)) em bipartido
+
+ #include <bits/stdc++.h>
+ using namespace std;
+ 
+ const int N = 5010;
+ 
+ const long long inf = 1LL << 61;
+ struct Dinic {
+ 	struct edge {
+ 		int to, rev;
+ 		long long flow, w;
+ 		int id;
+ 	};
+ 	int n, s, t, mxid;
+ 	vector<int> d, flow_through;
+ 	vector<int> done;
+ 	vector<vector<edge>> g;
+ 	Dinic() {}
+ 	Dinic(int _n) {
+ 		n = _n + 10;
+ 		mxid = 0;
+ 		g.resize(n);
+ 	}
+ 	void add_edge(int u, int v, long long w, int id = -1) {
+ 		edge a = {v, (int)g[v].size(), 0, w, id};
+ 		edge b = {u, (int)g[u].size(), 0, 0, -2}; // for bidirectional edges cap(b) = w
+ 		g[u].emplace_back(a);
+ 		g[v].emplace_back(b);
+ 		mxid = max(mxid, id);
+ 	}
+ 	bool bfs() {
+ 		d.assign(n, -1);
+ 		d[s] = 0;
+ 		queue<int> q;
+ 		q.push(s);
+ 		while (!q.empty()) {
+ 			int u = q.front();
+ 			q.pop();
+ 			for (auto &e : g[u]) {
+ 				int v = e.to;
+ 				if (d[v] == -1 && e.flow < e.w) d[v] = d[u] + 1, q.push(v);
+ 			}
+ 		}
+ 		return d[t] != -1;
+ 	}
+ 	long long dfs(int u, long long flow) {
+ 		if (u == t) return flow;
+ 		for (int &i = done[u]; i < (int)g[u].size(); i++) {
+ 			edge &e = g[u][i];
+ 			if (e.w <= e.flow) continue;
+ 			int v = e.to;
+ 			if (d[v] == d[u] + 1) {
+ 				long long nw = dfs(v, min(flow, e.w - e.flow));
+ 				if (nw > 0) {
+ 					e.flow += nw;
+ 					g[v][e.rev].flow -= nw;
+ 					return nw;
+ 				}
+ 			}
+ 		}
+ 		return 0;
+ 	}
+ 	long long max_flow(int _s, int _t) {
+ 		s = _s;
+ 		t = _t;
+ 		long long flow = 0;
+ 		while (bfs()) {
+ 			done.assign(n, 0);
+ 			while (long long nw = dfs(s, inf)) flow += nw;
+ 		}
+ 		flow_through.assign(mxid + 10, 0);
+ 		for (int i = 0; i < n; i++)
+ 			for (auto e : g[i])
+ 				if (e.id >= 0) flow_through[e.id] = e.flow;
+ 		return flow;
+ 	}
+ };
+ int main() {
+ 	int n, m;
+ 	cin >> n >> m;
+ 	Dinic F(n + 1);
+ 	for (int i = 1; i <= m; i++) {
+ 		int u, v, w;
+ 		cin >> u >> v >> w;
+ 		F.add_edge(u, v, w);
+ 	}
+ 	cout << F.max_flow(1, n) << '\n';
+ 	return 0;
+ }
+\end{lstlisting}
+
 \subsection{Pontos de articulacao}
 \begin{lstlisting}
 // Fonte: https://github.com/shahjalalshohag/code-library
@@ -1190,7 +1476,7 @@ basicstyle=\ttfamily\footnotesize, % fonte
 // ./run A.cpp
 
  #!/bin/bash
- g++ --std=c++20 -Wall -O2 -fsanitize=address,undefined $1 && ./a.out
+ g++ --std=c++20 -Wall -O2 -DNTJ -fsanitize=address,undefined $1 && ./a.out
 \end{lstlisting}
 
 \subsection{Template C++}
@@ -1220,9 +1506,11 @@ basicstyle=\ttfamily\footnotesize, % fonte
          _print(b...);
      } else cerr << a;
  }
+ #ifdef NTJ
  #define debug(x...) cerr << "[" << #x << "] = [", _print(x), cerr << "]" << endl
- 
- // #define debug(...)
+ #else
+ #define debug(...)
+ #endif
 \end{lstlisting}
 
 \end{document}

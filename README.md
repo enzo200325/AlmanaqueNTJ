@@ -31,7 +31,9 @@ Aqui está o `.pdf` do Almanaque.
 
 ### Strings
 
+- [Suffix Automaton](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%53%74%72%69%6E%67%73/%73%75%66%66%69%78%61%75%74%6F%6D%61%74%6F%6E.%63%70%70)
 - [Automato de Aho Corasick](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%53%74%72%69%6E%67%73/%61%68%6F%63%6F%72%61%73%69%63%6B.%63%70%70)
+- [KMP](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%53%74%72%69%6E%67%73/%6B%6D%70.%63%70%70)
 - [Hashing](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%53%74%72%69%6E%67%73/%68%61%73%68%69%6E%67.%63%70%70)
 
 ### Problemas
@@ -48,6 +50,7 @@ Aqui está o `.pdf` do Almanaque.
 
 - [Pontos de articulacao](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%47%72%61%66%6F%73/%70%6F%6E%74%6F%73%5F%64%65%5F%61%72%74%69%63%75%6C%61%63%61%6F.%63%70%70)
 - [Bridges e Edge Biconnected Components](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%47%72%61%66%6F%73/%62%72%69%64%67%65%73.%63%70%70)
+- [Dinic](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%47%72%61%66%6F%73/%64%69%6E%69%63.%63%70%70)
 - [Binary Lifting](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%47%72%61%66%6F%73/%62%69%6E%61%72%79%5F%6C%69%66%74%69%6E%67.%63%70%70)
 
 ### Matematica
