@@ -4,4 +4,4 @@
 // ./run A.cpp
 
 #!/bin/bash
-g++ --std=c++20 -Wall -O2 -fsanitize=address,undefined $1 && ./a.out
+g++ --std=c++20 -Wall -O2 -DNTJ -fsanitize=address,undefined $1 && ./a.out

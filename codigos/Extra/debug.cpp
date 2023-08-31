@@ -7,6 +7,8 @@ template<typename T, typename... U> void _print(T a, U... b) {
         _print(b...);
     } else cerr << a;
 }
+#ifdef NTJ
 #define debug(x...) cerr << "[" << #x << "] = [", _print(x), cerr << "]" << endl
-
-// #define debug(...)
+#else
+#define debug(...)
+#endif
