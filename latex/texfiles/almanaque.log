@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/MacPorts 2022.62882_2) (preloaded format=pdflatex 2023.5.3)  5 SEP 2023 14:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/MacPorts 2022.62882_2) (preloaded format=pdflatex 2023.5.3)  6 SEP 2023 14:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -715,10 +715,10 @@ Package rerunfilecheck Info: File `almanaque.out' has not changed.
 (rerunfilecheck)             Checksum: 44E7357A0037E830060F66F0F24C1BC0;4321.
  ) 
 Here is how much of TeX's memory you used:
- 19586 strings out of 479382
- 286585 string characters out of 5869399
+ 19584 strings out of 479382
+ 286569 string characters out of 5869399
  1020989 words of memory out of 5000000
- 35744 multiletter control sequences out of 15000+600000
+ 35742 multiletter control sequences out of 15000+600000
  483694 words of font info for 71 fonts, out of 8000000 for 9000
  430 hyphenation exceptions out of 8191
  74i,6n,100p,3262b,1970s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -730,7 +730,7 @@ f-texlive/fonts/type1/public/cm-super/sfrm1095.pfb></opt/local/share/texmf-texl
 ive/fonts/type1/public/cm-super/sfrm1200.pfb></opt/local/share/texmf-texlive/fo
 nts/type1/public/cm-super/sfrm1728.pfb></opt/local/share/texmf-texlive/fonts/ty
 pe1/public/cm-super/sftt1000.pfb>
-Output written on almanaque.pdf (33 pages, 254381 bytes).
+Output written on almanaque.pdf (33 pages, 254386 bytes).
 PDF statistics:
  2214 PDF objects out of 2487 (max. 8388607)
  2143 compressed objects within 22 object streams
