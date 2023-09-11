@@ -4,9 +4,6 @@
 //
 // String matching
 
-#include <bits/stdc++.h>
-using namespace std;
-
 const int N = 3e5 + 9;
 
 // returns the longest proper prefix array of pattern p
@@ -51,6 +48,7 @@ void kmp(vector<int> lps, string s, string p) {
     }
 }
 
+/*
 int main() {
     int i, j, k, n, m, t;
     cin >> t;
@@ -71,3 +69,4 @@ int main() {
     }
     return 0;
 }
+*/

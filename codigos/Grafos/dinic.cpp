@@ -4,9 +4,6 @@
 //
 // Max Flow em O(V^3) ou O(E * sqrt(V)) em bipartido
 
-#include <bits/stdc++.h>
-using namespace std;
-
 const int N = 5010;
 
 const long long inf = 1LL << 61;
@@ -80,6 +77,8 @@ struct Dinic {
         return flow;
     }
 };
+
+/*
 int main() {
     int n, m;
     cin >> n >> m;
@@ -92,3 +91,4 @@ int main() {
     cout << F.max_flow(1, n) << '\n';
     return 0;
 }
+*/

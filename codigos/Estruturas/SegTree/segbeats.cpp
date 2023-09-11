@@ -2,10 +2,6 @@
 //
 // Faz coisarada
 
-#include <bits/stdc++.h>
-using namespace std;
-using ll = long long;
-
 const int MAXN = 200001; // 1-based
 
 int N;
@@ -209,6 +205,7 @@ ll query_sum(int l, int r, int t = 1, int tl = 0, int tr = N - 1) {
     return query_sum(l, r, t << 1, tl, tm) + query_sum(l, r, t << 1 | 1, tm + 1, tr);
 }
 
+/*
 int main() {
     int Q;
 
@@ -242,3 +239,4 @@ int main() {
         }
     }
 }
+*/
