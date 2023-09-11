@@ -1,5 +1,5 @@
 // Binary Lifting
-// 
+//
 // Binary Lifting (em nodos)
 //
 // Computa LCA e tambem resolve queries de operacoes
@@ -28,10 +28,11 @@ struct BinaryLifting {
             up[u][i + 1] = up[up[u][i]][i];
             st[u][i + 1] = merge(st[u][i], st[up[u][i]][i]);
         }
-        for (int v : adj[u]) if (v != p) {
-            up[v][0] = u, st[v][0] = val[u];
-            build(v, u);
-        }
+        for (int v : adj[u])
+            if (v != p) {
+                up[v][0] = u, st[v][0] = val[u];
+                build(v, u);
+            }
         tout[u] = t++;
     }
 
@@ -44,9 +45,7 @@ struct BinaryLifting {
         build(root);
     }
 
-    bool ancestor(int u, int v) {
-        return tin[u] <= tin[v] && tout[u] >= tout[v];
-    }
+    bool ancestor(int u, int v) { return tin[u] <= tin[v] && tout[u] >= tout[v]; }
 
     int query2(int u, int v, bool include_lca) {
         if (ancestor(u, v)) return include_lca ? val[u] : neutral;
@@ -60,7 +59,7 @@ struct BinaryLifting {
         return include_lca ? merge(ans, st[u][0]) : ans;
     }
 
-    int query(int u, int v) { 
+    int query(int u, int v) {
         if (u == v) return val[u];
         return merge(query2(u, v, 1), query2(v, u, 0));
     }
@@ -74,6 +73,15 @@ struct BinaryLifting {
             }
         }
         return up[u][0];
+    }
+
+    int kth(int u, int k) {
+        for (int i = 0; i < LG; i++) {
+            if (k & (1 << i)) {
+                u = up[u][i];
+            }
+        }
+        return u;
     }
 
 } bl;
@@ -99,16 +107,15 @@ struct BinaryLifting {
             up[u][i + 1] = up[up[u][i]][i];
             st[u][i + 1] = merge(st[u][i], st[up[u][i]][i]);
         }
-        for (auto [w, v] : adj[u]) if (v != p) {
-            up[v][0] = u, st[v][0] = w;
-            build(v, u);
-        }
+        for (auto [w, v] : adj[u])
+            if (v != p) {
+                up[v][0] = u, st[v][0] = w;
+                build(v, u);
+            }
         tout[u] = t++;
     }
 
-    bool ancestor(int u, int v) {
-        return tin[u] <= tin[v] && tout[u] >= tout[v];
-    }
+    bool ancestor(int u, int v) { return tin[u] <= tin[v] && tout[u] >= tout[v]; }
 
     int query2(int u, int v) {
         if (ancestor(u, v)) return neutral;
@@ -122,7 +129,7 @@ struct BinaryLifting {
         return merge(ans, st[u][0]);
     }
 
-    int query(int u, int v) { 
+    int query(int u, int v) {
         if (u == v) return neutral;
 #warning TRATAR ESSE CASO ACIMA
         return merge(query2(u, v), query2(v, u));
@@ -143,11 +150,9 @@ struct node {
     int pref, suff, sum, best;
 };
 const node neutral = {0, 0, 0, 0};
-node new_node(int x) {
-    return node{x, x, x, x};
-}
+node new_node(int x) { return node{x, x, x, x}; }
 
-node merge(node& l, node& r) {
+node merge(node &l, node &r) {
     int pref = max(l.pref, l.sum + r.pref);
     int suff = max(r.suff, r.sum + l.suff);
     int sum = l.sum + r.sum;
@@ -167,12 +172,13 @@ struct BinaryLifting {
             st[u][i + 1] = merge(st[u][i], st[up[u][i]][i]);
             st2[u][i + 1] = merge(st2[up[u][i]][i], st2[u][i]);
         }
-        for (int v : adj[u]) if (v != p) {
-            up[v][0] = u;
-            st[v][0] = new_node(val[u]);
-            st2[v][0] = new_node(val[u]);
-            build(v, u);
-        }
+        for (int v : adj[u])
+            if (v != p) {
+                up[v][0] = u;
+                st[v][0] = new_node(val[u]);
+                st2[v][0] = new_node(val[u]);
+                build(v, u);
+            }
         tout[u] = t++;
     }
 
@@ -186,17 +192,17 @@ struct BinaryLifting {
         build(root);
     }
 
-    bool ancestor(int u, int v) {
-        return tin[u] <= tin[v] && tout[u] >= tout[v];
-    }
+    bool ancestor(int u, int v) { return tin[u] <= tin[v] && tout[u] >= tout[v]; }
 
     node query2(int u, int v, bool include_lca, bool invert) {
         if (ancestor(u, v)) return include_lca ? new_node(val[u]) : neutral;
         node ans = new_node(val[u]);
         for (int i = LG - 1; i >= 0; i--) {
             if (!ancestor(up[u][i], v)) {
-                if (invert) ans = merge(st2[u][i], ans);
-                else ans = merge(ans, st[u][i]);
+                if (invert)
+                    ans = merge(st2[u][i], ans);
+                else
+                    ans = merge(ans, st[u][i]);
                 u = up[u][i];
             }
         }
@@ -204,7 +210,7 @@ struct BinaryLifting {
         return merge(ans, st[u][0]);
     }
 
-    node query(int u, int v) { 
+    node query(int u, int v) {
         if (u == v) return new_node(val[u]);
         node l = query2(u, v, 1, 0);
         node r = query2(v, u, 0, 1);
@@ -223,4 +229,3 @@ struct BinaryLifting {
     }
 
 } bl, bl2;
-

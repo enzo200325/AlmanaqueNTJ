@@ -7,11 +7,11 @@ struct pt {
     pt() : x(0), y(0) {}
     pt(ll _x, ll _y) : x(_x), y(_y) {}
 
-    friend pt operator*(const pt &a, const ll &b) { return pt(b * a.x, b * a.y); }
-    friend pt operator-(const pt &a, const pt &b) { return pt(a.x - b.x, a.y - b.y); }
-    friend pt operator+(const pt &a, const pt &b) { return pt(a.x + b.x, a.y + b.y); }
-    friend ll operator*(const pt &a, const pt &b) { return a.x * b.x + a.y * b.y; }
-    friend ll operator^(const pt &a, const pt &b) { return a.x * b.y - a.y * b.x; }
+    pt operator*(const pt &a, const ll &b) { return pt(b * a.x, b * a.y); }
+    pt operator-(const pt &a, const pt &b) { return pt(a.x - b.x, a.y - b.y); }
+    pt operator+(const pt &a, const pt &b) { return pt(a.x + b.x, a.y + b.y); }
+    ll operator*(const pt &a, const pt &b) { return a.x * b.x + a.y * b.y; }
+    ll operator^(const pt &a, const pt &b) { return a.x * b.y - a.y * b.x; }
 
     bool operator<(const pt &p) {
         if (x == p.x) return y < p.y;
@@ -23,8 +23,6 @@ struct pt {
         return dx * dx + dy * dy;
     }
 
-    friend ostream &operator<<(ostream &out, const pt &a) {
-        return out << "(" << a.x << "," << a.y << ")";
-    }
+    friend ostream &operator<<(ostream &out, const pt &a) { return out << "(" << a.x << "," << a.y << ")"; }
     friend istream &operator>>(istream &in, pt &a) { return in >> a.x >> a.y; }
 };
