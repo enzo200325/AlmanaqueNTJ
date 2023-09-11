@@ -6,5 +6,5 @@ set nu
 set ai
 set ts=4
 set sw=4
-filetype plugin indent on
-imap {} {<cr>}<esc>O
+filet plugin indent on
+imap {} {}<left><return><up><end><return>
