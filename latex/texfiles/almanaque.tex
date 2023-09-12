@@ -1619,11 +1619,11 @@ basicstyle=\ttfamily\footnotesize, % fonte
      pt() : x(0), y(0) {}
      pt(ll _x, ll _y) : x(_x), y(_y) {}
  
-     pt operator*(const pt &a, const ll &b) { return pt(b * a.x, b * a.y); }
-     pt operator-(const pt &a, const pt &b) { return pt(a.x - b.x, a.y - b.y); }
-     pt operator+(const pt &a, const pt &b) { return pt(a.x + b.x, a.y + b.y); }
-     ll operator*(const pt &a, const pt &b) { return a.x * b.x + a.y * b.y; }
-     ll operator^(const pt &a, const pt &b) { return a.x * b.y - a.y * b.x; }
+     pt operator*(const ll &b) { return pt(b * x, b * y); }
+     pt operator-(const pt &b) { return pt(x - b.x, y - b.y); }
+     pt operator+(const pt &b) { return pt(x + b.x, y + b.y); }
+     ll operator*(const pt &b) { return x * b.x + y * b.y; }
+     ll operator^(const pt &b) { return x * b.y - y * b.x; }
  
      bool operator<(const pt &p) {
          if (x == p.x) return y < p.y;
