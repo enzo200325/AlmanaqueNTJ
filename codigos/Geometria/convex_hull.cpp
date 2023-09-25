@@ -11,10 +11,8 @@ bool ccw(pt &p, pt &a, pt &b, bool collinear = 0) {
 
 vector<pt> convex_hull(vector<pt> v, bool collinear = 0) {
     int n = size(v);
-    pt p0 = v[0];
-    for (int i = 1; i < n; i++) {
-        if (v[i] < p0) p0 = v[i];
-    }
+
+    auto [V, p0] = sort_by_angle(v);
 
     sort(begin(v), end(v), [&](pt &l, pt &r) { // sorta clockwise
         pt p1 = l - p0;
