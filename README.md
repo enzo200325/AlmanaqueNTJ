@@ -34,7 +34,7 @@ Aqui está o `.pdf` do Almanaque.
 - [Suffix Automaton](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%53%74%72%69%6E%67%73/%73%75%66%66%69%78%61%75%74%6F%6D%61%74%6F%6E.%63%70%70)
 - [Automato de Aho Corasick](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%53%74%72%69%6E%67%73/%61%68%6F%63%6F%72%61%73%69%63%6B.%63%70%70)
 - [KMP](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%53%74%72%69%6E%67%73/%6B%6D%70.%63%70%70)
-- [Hashing](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%53%74%72%69%6E%67%73/%68%61%73%68%69%6E%67.%63%70%70)
+- [Hashing estatico e dinamico](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%53%74%72%69%6E%67%73/%68%61%73%68%69%6E%67.%63%70%70)
 
 ### Problemas
 
@@ -62,6 +62,7 @@ Aqui está o `.pdf` do Almanaque.
 ### Geometria
 
 - [Ponto (Inteiro)](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%47%65%6F%6D%65%74%72%69%61/%70%74.%63%70%70)
+- [Tudo que temos de geometria pra pontos inteiros](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%47%65%6F%6D%65%74%72%69%61/%67%65%6F%6D%65%74%72%69%61%49%6E%74.%63%70%70)
 - [Convex Hull](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%47%65%6F%6D%65%74%72%69%61/%63%6F%6E%76%65%78%5F%68%75%6C%6C.%63%70%70)
 
 ### Extra
