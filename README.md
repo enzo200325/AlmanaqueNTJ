@@ -61,9 +61,7 @@ Aqui está o `.pdf` do Almanaque.
 
 ### Geometria
 
-- [Ponto (Inteiro)](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%47%65%6F%6D%65%74%72%69%61/%70%74.%63%70%70)
-- [Tudo que temos de geometria pra pontos inteiros](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%47%65%6F%6D%65%74%72%69%61/%67%65%6F%6D%65%74%72%69%61%49%6E%74.%63%70%70)
-- [Convex Hull](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%47%65%6F%6D%65%74%72%69%61/%63%6F%6E%76%65%78%5F%68%75%6C%6C.%63%70%70)
+- [Geometria inteiro](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%47%65%6F%6D%65%74%72%69%61/%67%65%6F%6D%65%74%72%69%61%49%6E%74.%63%70%70)
 
 ### Extra
 

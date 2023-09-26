@@ -1,5 +1,7 @@
-// Tudo que temos de geometria pra pontos inteiros
+// Geometria inteiro
 //
+// Tudo que temos de geometria pra pontos inteiros
+
 // Ponto com coordenadas inteiras e alguns metodos
 
 struct pt {
