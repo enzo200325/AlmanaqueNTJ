@@ -1,0 +1,13 @@
+// Config do Vim
+//
+// .vimrc
+
+set nu
+set ai
+set ts=4
+set sw=4
+set so=10
+filet plugin indent on
+inoremap {} {}<Left><Return><Up><End><Return> 
+
+au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
