@@ -1,7 +1,6 @@
-// Mint faster
+// Mint
 //
 // Inteiro automaticamente modulado
-// Tem um pouco mais de codigo, mas eh mais rapido
 
 const int mod = 998244353;
 
