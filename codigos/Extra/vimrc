@@ -6,13 +6,5 @@ set nu
 set ai
 set ts=4
 set sw=4
-filetype plugin indent on
-inoremap {} {}<Left><Return><Up><End><Return> 
-
-set nohls
-set belloff=all
-syntax on
-set expandtab
-set noshiftround
-set showmode
-set showcmd
+filet plugin indent on
+inoremap {} {}<left><return><up><end><return>
