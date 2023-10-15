@@ -14,7 +14,7 @@ struct mint {
         return res;
     }
     bool operator==(mint o) { return val == o.val; }
-    friend mint operator*(mint a, mint o) { return (ll)a.val * o.val % mod; }
+    friend mint operator*(mint a, mint o) { return (ll)a.val * o.val; }
     friend mint operator+(mint a, mint o) {
         a.val += o.val;
         if (a.val >= mod) a.val -= mod;
