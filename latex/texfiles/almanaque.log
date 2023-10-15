@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/MacPorts 2022.62882_2) (preloaded format=pdflatex 2023.5.3)  31 AUG 2023 16:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/MacPorts 2022.62882_2) (preloaded format=pdflatex 2023.5.3)  15 OCT 2023 15:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -663,56 +663,64 @@ LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [5]
-[6]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [7]
-[8]
+[8] [9]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [9]
-[10] [11
+ [10]
+[11] [12
 
-] [12
+] [13
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [13]
-[14] [15
+ [14]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-]
+ [15]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [16]
+[17] [18
+
+] [19] [20] [21]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [17]
-[18]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [19]
-[20] [21] [22] [23
-
-] [24]
+ [22]
+[23] [24]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [25]
+[26] [27] [28
+
+]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [26]
-[27] [28] [29] (./almanaque.aux)
+ [29]
+[30] [31] [32
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [33]
+[34] [35] [36] (./almanaque.aux)
 Package rerunfilecheck Info: File `almanaque.out' has not changed.
-(rerunfilecheck)             Checksum: 9FFD4773825231BEB4883F15E7F6D63C;3974.
+(rerunfilecheck)             Checksum: 85D651FDAC0DF97BD52C3CD7746ACA0B;4947.
  ) 
 Here is how much of TeX's memory you used:
- 19301 strings out of 479382
- 282504 string characters out of 5869399
- 1020997 words of memory out of 5000000
- 35678 multiletter control sequences out of 15000+600000
+ 19809 strings out of 479382
+ 290246 string characters out of 5869399
+ 1009989 words of memory out of 5000000
+ 35735 multiletter control sequences out of 15000+600000
  483694 words of font info for 71 fonts, out of 8000000 for 9000
  430 hyphenation exceptions out of 8191
- 74i,6n,100p,3262b,1970s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 74i,6n,100p,3262b,2023s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/opt/local/share/texmf-texlive/fonts/enc/dvips/cm-super/cm-super-t1.enc}</op
 t/local/share/texmf-texlive/fonts/type1/public/cm-super/sfbx1095.pfb></opt/loca
 l/share/texmf-texlive/fonts/type1/public/cm-super/sfbx1200.pfb></opt/local/shar
@@ -721,10 +729,10 @@ f-texlive/fonts/type1/public/cm-super/sfrm1095.pfb></opt/local/share/texmf-texl
 ive/fonts/type1/public/cm-super/sfrm1200.pfb></opt/local/share/texmf-texlive/fo
 nts/type1/public/cm-super/sfrm1728.pfb></opt/local/share/texmf-texlive/fonts/ty
 pe1/public/cm-super/sftt1000.pfb>
-Output written on almanaque.pdf (29 pages, 240749 bytes).
+Output written on almanaque.pdf (36 pages, 267846 bytes).
 PDF statistics:
- 1924 PDF objects out of 2073 (max. 8388607)
- 1860 compressed objects within 19 object streams
- 1375 named destinations out of 1440 (max. 500000)
- 233 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2512 PDF objects out of 2984 (max. 8388607)
+ 2435 compressed objects within 25 object streams
+ 1826 named destinations out of 2073 (max. 500000)
+ 273 words of extra memory for PDF output out of 10000 (max. 10000000)
 

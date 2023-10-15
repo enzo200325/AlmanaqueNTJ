@@ -1,19 +1,16 @@
 // Pollard Rho
 //
 // Fonte: https://github.com/shahjalalshohag/code-library
-// 
-// Fatora numeros ate 8*10^18 
+//
+// Fatora numeros ate 8*10^18
 // Complexidade: O(n ^ (1/4))
 
-using ll = long long;
 namespace PollardRho {
     mt19937 rnd(chrono::steady_clock::now().time_since_epoch().count());
     const int P = 1e6 + 9;
     ll seq[P];
     int primes[P], spf[P];
-    inline ll add_mod(ll x, ll y, ll m) {
-        return (x += y) < m ? x : x - m;
-    }
+    inline ll add_mod(ll x, ll y, ll m) { return (x += y) < m ? x : x - m; }
     inline ll mul_mod(ll x, ll y, ll m) {
         ll res = __int128(x) * y % m;
         return res;
@@ -33,7 +30,8 @@ namespace PollardRho {
         if (n <= 2 || (n & 1 ^ 1)) return (n == 2);
         if (n < P) return spf[n] == n;
         ll c, d, s = 0, r = n - 1;
-        for (; !(r & 1); r >>= 1, s++) {}
+        for (; !(r & 1); r >>= 1, s++) {
+        }
         // each iteration is a round
         for (int i = 0; primes[i] < n && primes[i] < 32; i++) {
             c = pow_mod(primes[i], r, n);
@@ -76,10 +74,11 @@ namespace PollardRho {
             if (t && (u = __gcd(u, n)) > 1 && u < n) return u;
         }
     }
+
     vector<ll> factorize(ll n) {
-        if (n == 1) return vector <ll>();
-        if (miller_rabin(n)) return vector<ll> {n};
-        vector <ll> v, w;
+        if (n == 1) return vector<ll>();
+        if (miller_rabin(n)) return vector<ll>{n};
+        vector<ll> v, w;
         while (n > 1 && n < P) {
             v.push_back(spf[n]);
             n /= spf[n];
@@ -92,18 +91,24 @@ namespace PollardRho {
         }
         return v;
     }
-}
+} // namespace PollardRho
+
+/*
 int32_t main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     PollardRho::init();
-    int t; cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
-        ll n; cin >> n;
+        ll n;
+        cin >> n;
         auto f = PollardRho::factorize(n);
         sort(f.begin(), f.end());
-        cout << f.size() << ' '; 
-        for (auto x: f) cout << x << ' '; cout << '\n';
+        cout << f.size() << ' ';
+        for (auto x : f) cout << x << ' ';
+        cout << '\n';
     }
     return 0;
 }
+*/
