@@ -48,10 +48,14 @@ Aqui está o `.pdf` do Almanaque.
 
 ### Grafos
 
+- LCA-BinaryLifting
+	- [Binary Lifting (em arestas)](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%47%72%61%66%6F%73/%4C%43%41%2D%42%69%6E%61%72%79%4C%69%66%74%69%6E%67/%62%69%6E%61%72%79%5F%6C%69%66%74%69%6E%67%5F%71%75%65%72%79%5F%61%72%65%73%74%61.%63%70%70)
+	- [Binary Lifting](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%47%72%61%66%6F%73/%4C%43%41%2D%42%69%6E%61%72%79%4C%69%66%74%69%6E%67/%62%69%6E%61%72%79%5F%6C%69%66%74%69%6E%67%5F%71%75%65%72%79%5F%6E%6F%64%6F.%63%70%70)
+	- [Binary Lifting](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%47%72%61%66%6F%73/%4C%43%41%2D%42%69%6E%61%72%79%4C%69%66%74%69%6E%67/%62%69%6E%61%72%79%5F%6C%69%66%74%69%6E%67%5F%6C%63%61.%63%70%70)
+	- [Binary Lifting para operacoes nao comutativas (em nodos)](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%47%72%61%66%6F%73/%4C%43%41%2D%42%69%6E%61%72%79%4C%69%66%74%69%6E%67/%62%69%6E%61%72%79%5F%6C%69%66%74%69%6E%67%5F%71%75%65%72%79%5F%6E%6F%64%6F%32.%63%70%70)
 - [Pontos de articulacao](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%47%72%61%66%6F%73/%70%6F%6E%74%6F%73%5F%64%65%5F%61%72%74%69%63%75%6C%61%63%61%6F.%63%70%70)
 - [Bridges e Edge Biconnected Components](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%47%72%61%66%6F%73/%62%72%69%64%67%65%73.%63%70%70)
 - [Dinic](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%47%72%61%66%6F%73/%64%69%6E%69%63.%63%70%70)
-- [Binary Lifting](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%47%72%61%66%6F%73/%62%69%6E%61%72%79%5F%6C%69%66%74%69%6E%67.%63%70%70)
 
 ### Matematica
 

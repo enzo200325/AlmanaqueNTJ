@@ -920,7 +920,7 @@ basicstyle=\ttfamily\footnotesize, % fonte
 
 \subsection{Binary Lifting}
 \begin{lstlisting}
-// Binary Lifting (em nodos)
+// Binary Lifting pra query (em nodos)
 //
 // Computa LCA e tambem resolve queries de operacoes
 // associativas e comutativas em caminhos.
@@ -928,41 +928,43 @@ basicstyle=\ttfamily\footnotesize, % fonte
 // Build(): O(n log(n))
 // Query(): O(log(n))
 // Lca(): O(log(n))
+// Kth(): O(log(n))
 //
 // up[u][i] = (2 ^ i)-esimo pai do u
 // st[u][i] = query ate (2 ^ i)-esimo pai do u (NAO INCLUI O U)
 
- const int maxn = 3e5 + 5, LG = 20;
- vector<int> adj[maxn];
- 
  struct BinaryLifting {
-     int up[maxn][LG], st[maxn][LG], val[maxn], t = 1;
-     int tin[maxn], tout[maxn];
+     vector<vector<int>> adj, up, st;
+     vector<int> val, tin, tout;
+     int N, LG, t;
  
      const int neutral = 0;
      int merge(int l, int r) { return l + r; }
  
-     void build(int u, int p = -1) {
+     void dfs(int u, int p = -1) {
          tin[u] = t++;
          for (int i = 0; i < LG - 1; i++) {
              up[u][i + 1] = up[up[u][i]][i];
              st[u][i + 1] = merge(st[u][i], st[up[u][i]][i]);
          }
-         for (int v : adj[u])
-             if (v != p) {
-                 up[v][0] = u, st[v][0] = val[u];
-                 build(v, u);
-             }
+         for (int v : adj[u]) if (v != p) {
+             up[v][0] = u, st[v][0] = val[u];
+             dfs(v, u);
+         }
          tout[u] = t++;
      }
  
-     void build(int root, vector<int> &v) {
+     void build(int root, vector<vector<int>>& adj2, vector<int>& v) {
          t = 1;
-         int N = size(v);
-         for (int i = 0; i < N; i++) val[i] = v[i];
+         N = size(adj2);
+         LG = 31 - __builtin_clz(N);
+         adj = adj2;
+         val = v;
+         tin = tout = vector<int>(N);
+         up = st = vector (N, vector<int>(LG, neutral));
          up[root][0] = root;
          st[root][0] = val[root];
-         build(root);
+         dfs(root);
      }
  
      bool ancestor(int u, int v) { return tin[u] <= tin[v] && tout[u] >= tout[v]; }
@@ -988,40 +990,104 @@ basicstyle=\ttfamily\footnotesize, % fonte
          if (ancestor(u, v)) return u;
          if (ancestor(v, u)) return v;
          for (int i = LG - 1; i >= 0; i--) {
-             if (!ancestor(up[u][i], v)) {
-                 u = up[u][i];
-             }
+             if (!ancestor(up[u][i], v)) u = up[u][i];
          }
          return up[u][0];
      }
  
      int kth(int u, int k) {
          for (int i = 0; i < LG; i++) {
-             if (k & (1 << i)) {
-                 u = up[u][i];
-             }
+             if (k & (1 << i)) u = up[u][i];
          }
          return u;
      }
  
  } bl;
- 
- // Binary Lifting (em arestas)
- //
- // up[u][i] = (2 ^ i)-esimo pai do u
- // st[u][i] = query ate (2 ^ i)-esimo pai do u
- 
- const int maxn = 3e5 + 5, LG = 20;
- vector<pair<int, int>> adj[maxn];
- 
+\end{lstlisting}
+
+\subsection{Binary Lifting}
+\begin{lstlisting}
+// Binary Lifting pra LCA
+//
+// Computa Lowest Common Ancestor e faz queries de k-esimo ancestral
+//
+// Build(): O(n log(n))
+// Lca(): O(log(n))
+// Kth(): O(log(n))
+//
+// up[u][i] = (2 ^ i)-esimo pai do u
+
  struct BinaryLifting {
-     int up[maxn][LG], st[maxn][LG], t = 1;
-     int tin[maxn], tout[maxn];
+     vector<vector<int>> adj, up;
+     vector<int> tin, tout;
+     int N, LG, t;
  
      const int neutral = 0;
      int merge(int l, int r) { return l + r; }
  
-     void build(int u, int p = -1) {
+     void dfs(int u, int p = -1) {
+         tin[u] = t++;
+         for (int i = 0; i < LG - 1; i++) up[u][i + 1] = up[up[u][i]][i];
+         for (int v : adj[u]) if (v != p) {
+             up[v][0] = u;
+             dfs(v, u);
+         }
+         tout[u] = t++;
+     }
+ 
+     void build(int root, vector<vector<int>>& adj2) {
+         t = 1;
+         N = size(adj2);
+         LG = 31 - __builtin_clz(N);
+         adj = adj2;
+         tin = tout = vector<int>(N);
+         up = vector (N, vector<int>(LG));
+         up[root][0] = root;
+         dfs(root);
+     }
+ 
+     bool ancestor(int u, int v) { return tin[u] <= tin[v] && tout[u] >= tout[v]; }
+ 
+     int lca(int u, int v) {
+         if (ancestor(u, v)) return u;
+         if (ancestor(v, u)) return v;
+         for (int i = LG - 1; i >= 0; i--) {
+             if (!ancestor(up[u][i], v)) u = up[u][i];
+         }
+         return up[u][0];
+     }
+ 
+     int kth(int u, int k) {
+         for (int i = 0; i < LG; i++) {
+             if (k & (1 << i)) u = up[u][i];
+         }
+         return u;
+     }
+ 
+ } bl;
+\end{lstlisting}
+
+\subsection{Binary Lifting (em arestas)}
+\begin{lstlisting}
+// Resolve queries em arvore quando os valores
+// estao nas arestas
+//
+// Build(): O(n log(n))
+// query(): O(log(n))
+//
+// up[u][i] = (2 ^ i)-esimo pai do u
+// st[u][i] = query ate (2 ^ i)-esimo pai do u
+
+ struct BinaryLifting {
+     vector<vector<ii>> adj;
+     vector<vector<int>> up, st;
+     vector<int> tin, tout;
+     int N, LG, t;
+ 
+     const int neutral = 0;
+     int merge(int l, int r) { return l + r; }
+ 
+     void dfs(int u, int p = -1) {
          tin[u] = t++;
          for (int i = 0; i < LG - 1; i++) {
              up[u][i + 1] = up[up[u][i]][i];
@@ -1030,9 +1096,20 @@ basicstyle=\ttfamily\footnotesize, % fonte
          for (auto [w, v] : adj[u])
              if (v != p) {
                  up[v][0] = u, st[v][0] = w;
-                 build(v, u);
+                 dfs(v, u);
              }
          tout[u] = t++;
+     }
+ 
+     void build(int root, vector<vector<ii>>& adj2) {
+         t = 1;
+         N = size(adj2);
+         LG = 31 - __builtin_clz(N);
+         adj = adj2;
+         tin = tout = vector<int>(N);
+         up = st = vector (N, vector<int>(LG, neutral));
+         up[root][0] = root;
+         dfs(root);
      }
  
      bool ancestor(int u, int v) { return tin[u] <= tin[v] && tout[u] >= tout[v]; }
@@ -1056,34 +1133,36 @@ basicstyle=\ttfamily\footnotesize, % fonte
      }
  } bl;
  
- // Binary Lifting para operacoes nao comutativas (em nodos)
- //
- // Levemente diferente do padrao
- //
- // Esse aqui resolve query de Kadani em arvore
- // https://codeforces.com/contest/1843/problem/F2
- 
- const int maxn = 3e5 + 5, LG = 20;
- vector<int> adj[maxn];
- 
+\end{lstlisting}
+
+\subsection{Binary Lifting para operacoes nao comutativas (em nodos)}
+\begin{lstlisting}
+// Nome auto explicativo
+// Levemente diferente do padrao
+//
+// Esse aqui resolve query de Kadani em arvore
+// https://codeforces.com/contest/1843/problem/F2
+
  struct node {
      int pref, suff, sum, best;
+     node() : pref(0), suff(0), sum(0), best(0) {}
+     node(int x) : pref(x), suff(x), sum(x), best(x) {}
+     node(int a, int b, int c, int d) : pref(a), suff(b), sum(c), best(d) {}
  };
- const node neutral = {0, 0, 0, 0};
- node new_node(int x) { return node{x, x, x, x}; }
  
  node merge(node &l, node &r) {
      int pref = max(l.pref, l.sum + r.pref);
      int suff = max(r.suff, r.sum + l.suff);
      int sum = l.sum + r.sum;
      int best = max(l.suff + r.pref, max(l.best, r.best));
-     return node{pref, suff, sum, best};
+     return node(pref, suff, sum, best);
  }
  
  struct BinaryLifting {
-     int up[maxn][LG], val[maxn], t = 1;
-     int tin[maxn], tout[maxn];
-     node st[maxn][LG], st2[maxn][LG];
+     vector<vector<int>> adj, up;
+     vector<int> val, tin, tout;
+     vector<vector<node>> st, st2;
+     int N, LG, t;
  
      void build(int u, int p = -1) {
          tin[u] = t++;
@@ -1095,28 +1174,33 @@ basicstyle=\ttfamily\footnotesize, % fonte
          for (int v : adj[u])
              if (v != p) {
                  up[v][0] = u;
-                 st[v][0] = new_node(val[u]);
-                 st2[v][0] = new_node(val[u]);
+                 st[v][0] = node(val[u]);
+                 st2[v][0] = node(val[u]);
                  build(v, u);
              }
          tout[u] = t++;
      }
  
-     void build(int root, vector<int> &v) {
+     void build(int root, vector<vector<int>> &adj2, vector<int> &v) {
          t = 1;
-         int N = size(v);
-         for (int i = 0; i < N; i++) val[i] = v[i];
+         N = size(adj2);
+         LG = 31 - __builtin_clz(N);
+         adj = adj2;
+         val = v;
+         tin = tout = vector<int>(N);
+         up = vector(N, vector<int>(LG));
+         st = st2 = vector(N, vector<node>(LG));
          up[root][0] = root;
-         st[root][0] = new_node(val[root]);
-         st2[root][0] = new_node(val[u]);
+         st[root][0] = node(val[root]);
+         st2[root][0] = node(val[root]);
          build(root);
      }
  
      bool ancestor(int u, int v) { return tin[u] <= tin[v] && tout[u] >= tout[v]; }
  
      node query2(int u, int v, bool include_lca, bool invert) {
-         if (ancestor(u, v)) return include_lca ? new_node(val[u]) : neutral;
-         node ans = new_node(val[u]);
+         if (ancestor(u, v)) return include_lca ? node(val[u]) : node();
+         node ans = node(val[u]);
          for (int i = LG - 1; i >= 0; i--) {
              if (!ancestor(up[u][i], v)) {
                  if (invert)
@@ -1131,7 +1215,7 @@ basicstyle=\ttfamily\footnotesize, % fonte
      }
  
      node query(int u, int v) {
-         if (u == v) return new_node(val[u]);
+         if (u == v) return node(val[u]);
          node l = query2(u, v, 1, 0);
          node r = query2(v, u, 0, 1);
          return merge(l, r);
@@ -1786,20 +1870,29 @@ basicstyle=\ttfamily\footnotesize, % fonte
 // Inteiro automaticamente modulado
 
  const int mod = 998244353;
- struct Mint {
+ 
+ struct mint {
      int val;
-     Mint(int v = 0) { val = v % mod; }
-     bool operator==(Mint o) { return val == o.val; }
-     int operator*(Mint o) { return (((ll)val * o.val) % mod); }
-     int operator+(Mint o) { return ((ll)val + o.val) % mod; }
-     int operator-(Mint o) { return ((ll)val - o.val + mod) % mod; }
-     int operator^(ll o) { return pwr(val, o); }
-     int pwr(Mint b, ll e) {
-         Mint res;
-         for (res = 1; e; e >>= 1, b = b * b)
-             if (e & 1) res = res * res;
-         return res.val;
+     mint(ll v = 0) { val = v % mod; if (val < 0) val += mod; }
+     mint pwr(mint b, ll e) {
+         mint res;
+         for (res = 1; e; e >>= 1, b = b * b) if (e & 1) res = res * b;
+         return res;
      }
+     bool operator==(mint o) { return val == o.val; }
+     friend mint operator*(mint a, mint o) { return (ll)a.val * o.val % mod; }
+     friend mint operator+(mint a, mint o) {
+         a.val += o.val;
+         if (a.val >= mod) a.val -= mod;
+         return a;
+     }
+     friend mint operator-(mint a, mint o) {
+         a.val -= o.val;
+         if (a.val < 0) a.val += mod;
+         return a;
+     }
+     friend mint operator^(mint a, ll o) { return a.pwr(a, o); }
+     friend mint operator/(mint a, mint o) { return a * (o ^ (mod - 2)); }
  };
 \end{lstlisting}
 
