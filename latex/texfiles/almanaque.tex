@@ -1856,19 +1856,50 @@ basicstyle=\ttfamily\footnotesize, % fonte
  };
 \end{lstlisting}
 
-\subsection{Gerador aleatorio de inteiros em [l, r]}
+\subsection{Gerador aleatorio de casos}
 \begin{lstlisting}
+ #include <bits/stdc++.h>
+ using namespace std;
+ typedef long long ll;
  mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
  
  ll uniform(ll l, ll r) {
      uniform_int_distribution<int> uid(l, r);
      return uid(rng);
  }
+ 
+ int main(){
+     cout << uniform(1, 10) << endl;
+ }
 \end{lstlisting}
 
-\subsection{Mint}
+\subsection{Mint easier}
 \begin{lstlisting}
 // Inteiro automaticamente modulado
+// Bem compacto
+
+ struct mint {
+     int val;
+     int fix(ll x) { return ((x % mod) + mod) % mod; }
+     mint(ll v = 0) { val = fix(v); }
+     mint pwr(mint b, ll e) {
+         mint res;
+         for (res = 1; e; e >>= 1, b = b * b) if (e & 1) res = res * b;
+         return res;
+     }
+     bool operator==(mint o) { return val == o.val; }
+     friend mint operator*(mint a, mint o) { return a.fix((ll)a.val * o.val); }
+     friend mint operator+(mint a, mint o) { return a.fix(a.val + o.val); }
+     friend mint operator-(mint a, mint o) { return a.fix(a.val - o.val); }
+     friend mint operator^(mint a, ll o) { return a.pwr(a, o); }
+     friend mint operator/(mint a, mint o) { return a * (o ^ (mod - 2)); }
+ };
+\end{lstlisting}
+
+\subsection{Mint faster}
+\begin{lstlisting}
+// Inteiro automaticamente modulado
+// Tem um pouco mais de codigo, mas eh mais rapido
 
  const int mod = 998244353;
  
@@ -1905,24 +1936,24 @@ basicstyle=\ttfamily\footnotesize, % fonte
 \subsection{Script de stress test}
 \begin{lstlisting}
  set -e
- g++ -O2 code.cpp -o code
- g++ -O2 brute.cpp -o brute
- g++ -O2 gen.cpp -o gen
+ g++-13 -O2 code.cpp -o code
+ g++-13 -O2 brute.cpp -o brute
+ g++-13 -O2 gen.cpp -o gen
  
  for((i = 1; ; ++i)); do
-     ./gen > input_file
-     ./code < input_file > myAnswer
-     ./brute < input_file > correctAnswer
-     diff myAnswer correctAnswer > /dev/null || break
-     echo "Passed test: "  $i
+     ./gen > in
+     ./code < in > myout
+     ./brute < in > out
+     diff myout out > /dev/null || break
+     echo "OK: "  $i
  done
  
- echo "WA on the following test:"
- cat input_file
- echo "Your answer is:"
- cat myAnswer
- echo "Correct answer is:"
- cat correctAnswer
+ echo "WA:"
+ cat in
+ echo "Myout:"
+ cat myout
+ echo "Out:"
+ cat out
 \end{lstlisting}
 
 \subsection{Script pra rodar C++}

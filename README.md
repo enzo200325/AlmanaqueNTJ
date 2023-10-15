@@ -71,11 +71,13 @@ Aqui está o `.pdf` do Almanaque.
 
 - [Template C++](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%45%78%74%72%61/%74%65%6D%70%6C%61%74%65.%63%70%70)
 - [Custom Hash](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%45%78%74%72%61/%63%75%73%74%6F%6D%5F%68%61%73%68.%63%70%70)
+- Mint
+	- [Mint easier](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%45%78%74%72%61/%4D%69%6E%74/%6D%69%6E%74%5F%65%61%73%69%65%72.%63%70%70)
+	- [Mint faster](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%45%78%74%72%61/%4D%69%6E%74/%6D%69%6E%74%5F%66%61%73%74%65%72.%63%70%70)
 - [Config do Vim](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%45%78%74%72%61/%76%69%6D%72%63)
 - [Rand C++](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%45%78%74%72%61/%72%61%6E%64.%63%70%70)
 - [Template de debug simples](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%45%78%74%72%61/%64%65%62%75%67.%63%70%70)
-- [Mint](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%45%78%74%72%61/%6D%69%6E%74.%63%70%70)
 - [Script pra rodar C++](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%45%78%74%72%61/%72%75%6E)
 - Stress Test
 	- [Script de stress test](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%45%78%74%72%61/%53%74%72%65%73%73%20%54%65%73%74/%73%74%72%65%73%73.%73%68)
-	- [Gerador aleatorio de inteiros em [l, r]](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%45%78%74%72%61/%53%74%72%65%73%73%20%54%65%73%74/%67%65%6E.%63%70%70)
+	- [Gerador aleatorio de casos](https://github.com/enzo200325/AlmanaqueNTJ/blob/master/%63%6F%64%69%67%6F%73/%45%78%74%72%61/%53%74%72%65%73%73%20%54%65%73%74/%67%65%6E.%63%70%70)
