@@ -1,6 +1,4 @@
-// Binary Lifting
-//
-// Binary Lifting pra query (em nodos)
+// Binary Lifting Query (em nodos)
 //
 // Computa LCA e tambem resolve queries de operacoes
 // associativas e comutativas em caminhos.

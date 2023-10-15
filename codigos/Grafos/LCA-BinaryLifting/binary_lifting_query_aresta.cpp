@@ -1,4 +1,4 @@
-// Binary Lifting (em arestas)
+// Binary Lifting Query (em arestas)
 //
 // Resolve queries em arvore quando os valores
 // estao nas arestas

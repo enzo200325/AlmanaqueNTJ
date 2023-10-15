@@ -920,8 +920,136 @@ basicstyle=\ttfamily\footnotesize, % fonte
 
 \subsection{Binary Lifting}
 \begin{lstlisting}
-// Binary Lifting pra query (em nodos)
+// Binary Lifting pra LCA
 //
+// Computa Lowest Common Ancestor e faz queries de k-esimo ancestral
+//
+// Build(): O(n log(n))
+// Lca(): O(log(n))
+// Kth(): O(log(n))
+//
+// up[u][i] = (2 ^ i)-esimo pai do u
+
+ struct BinaryLifting {
+     vector<vector<int>> adj, up;
+     vector<int> tin, tout;
+     int N, LG, t;
+ 
+     const int neutral = 0;
+     int merge(int l, int r) { return l + r; }
+ 
+     void dfs(int u, int p = -1) {
+         tin[u] = t++;
+         for (int i = 0; i < LG - 1; i++) up[u][i + 1] = up[up[u][i]][i];
+         for (int v : adj[u]) if (v != p) {
+             up[v][0] = u;
+             dfs(v, u);
+         }
+         tout[u] = t++;
+     }
+ 
+     void build(int root, vector<vector<int>>& adj2) {
+         t = 1;
+         N = size(adj2);
+         LG = 31 - __builtin_clz(N);
+         adj = adj2;
+         tin = tout = vector<int>(N);
+         up = vector (N, vector<int>(LG));
+         up[root][0] = root;
+         dfs(root);
+     }
+ 
+     bool ancestor(int u, int v) { return tin[u] <= tin[v] && tout[u] >= tout[v]; }
+ 
+     int lca(int u, int v) {
+         if (ancestor(u, v)) return u;
+         if (ancestor(v, u)) return v;
+         for (int i = LG - 1; i >= 0; i--) {
+             if (!ancestor(up[u][i], v)) u = up[u][i];
+         }
+         return up[u][0];
+     }
+ 
+     int kth(int u, int k) {
+         for (int i = 0; i < LG; i++) {
+             if (k & (1 << i)) u = up[u][i];
+         }
+         return u;
+     }
+ 
+ } bl;
+\end{lstlisting}
+
+\subsection{Binary Lifting Query (em arestas)}
+\begin{lstlisting}
+// Resolve queries em arvore quando os valores
+// estao nas arestas
+//
+// Build(): O(n log(n))
+// query(): O(log(n))
+//
+// up[u][i] = (2 ^ i)-esimo pai do u
+// st[u][i] = query ate (2 ^ i)-esimo pai do u
+
+ struct BinaryLifting {
+     vector<vector<ii>> adj;
+     vector<vector<int>> up, st;
+     vector<int> tin, tout;
+     int N, LG, t;
+ 
+     const int neutral = 0;
+     int merge(int l, int r) { return l + r; }
+ 
+     void dfs(int u, int p = -1) {
+         tin[u] = t++;
+         for (int i = 0; i < LG - 1; i++) {
+             up[u][i + 1] = up[up[u][i]][i];
+             st[u][i + 1] = merge(st[u][i], st[up[u][i]][i]);
+         }
+         for (auto [w, v] : adj[u])
+             if (v != p) {
+                 up[v][0] = u, st[v][0] = w;
+                 dfs(v, u);
+             }
+         tout[u] = t++;
+     }
+ 
+     void build(int root, vector<vector<ii>>& adj2) {
+         t = 1;
+         N = size(adj2);
+         LG = 31 - __builtin_clz(N);
+         adj = adj2;
+         tin = tout = vector<int>(N);
+         up = st = vector (N, vector<int>(LG, neutral));
+         up[root][0] = root;
+         dfs(root);
+     }
+ 
+     bool ancestor(int u, int v) { return tin[u] <= tin[v] && tout[u] >= tout[v]; }
+ 
+     int query2(int u, int v) {
+         if (ancestor(u, v)) return neutral;
+         int ans = neutral;
+         for (int i = LG - 1; i >= 0; i--) {
+             if (!ancestor(up[u][i], v)) {
+                 ans = merge(ans, st[u][i]);
+                 u = up[u][i];
+             }
+         }
+         return merge(ans, st[u][0]);
+     }
+ 
+     int query(int u, int v) {
+         if (u == v) return neutral;
+ #warning TRATAR ESSE CASO ACIMA
+         return merge(query2(u, v), query2(v, u));
+     }
+ } bl;
+ 
+\end{lstlisting}
+
+\subsection{Binary Lifting Query (em nodos)}
+\begin{lstlisting}
 // Computa LCA e tambem resolve queries de operacoes
 // associativas e comutativas em caminhos.
 //
@@ -1005,139 +1133,9 @@ basicstyle=\ttfamily\footnotesize, % fonte
  } bl;
 \end{lstlisting}
 
-\subsection{Binary Lifting}
+\subsection{Binary Lifting Query (em nodos)}
 \begin{lstlisting}
-// Binary Lifting pra LCA
-//
-// Computa Lowest Common Ancestor e faz queries de k-esimo ancestral
-//
-// Build(): O(n log(n))
-// Lca(): O(log(n))
-// Kth(): O(log(n))
-//
-// up[u][i] = (2 ^ i)-esimo pai do u
-
- struct BinaryLifting {
-     vector<vector<int>> adj, up;
-     vector<int> tin, tout;
-     int N, LG, t;
- 
-     const int neutral = 0;
-     int merge(int l, int r) { return l + r; }
- 
-     void dfs(int u, int p = -1) {
-         tin[u] = t++;
-         for (int i = 0; i < LG - 1; i++) up[u][i + 1] = up[up[u][i]][i];
-         for (int v : adj[u]) if (v != p) {
-             up[v][0] = u;
-             dfs(v, u);
-         }
-         tout[u] = t++;
-     }
- 
-     void build(int root, vector<vector<int>>& adj2) {
-         t = 1;
-         N = size(adj2);
-         LG = 31 - __builtin_clz(N);
-         adj = adj2;
-         tin = tout = vector<int>(N);
-         up = vector (N, vector<int>(LG));
-         up[root][0] = root;
-         dfs(root);
-     }
- 
-     bool ancestor(int u, int v) { return tin[u] <= tin[v] && tout[u] >= tout[v]; }
- 
-     int lca(int u, int v) {
-         if (ancestor(u, v)) return u;
-         if (ancestor(v, u)) return v;
-         for (int i = LG - 1; i >= 0; i--) {
-             if (!ancestor(up[u][i], v)) u = up[u][i];
-         }
-         return up[u][0];
-     }
- 
-     int kth(int u, int k) {
-         for (int i = 0; i < LG; i++) {
-             if (k & (1 << i)) u = up[u][i];
-         }
-         return u;
-     }
- 
- } bl;
-\end{lstlisting}
-
-\subsection{Binary Lifting (em arestas)}
-\begin{lstlisting}
-// Resolve queries em arvore quando os valores
-// estao nas arestas
-//
-// Build(): O(n log(n))
-// query(): O(log(n))
-//
-// up[u][i] = (2 ^ i)-esimo pai do u
-// st[u][i] = query ate (2 ^ i)-esimo pai do u
-
- struct BinaryLifting {
-     vector<vector<ii>> adj;
-     vector<vector<int>> up, st;
-     vector<int> tin, tout;
-     int N, LG, t;
- 
-     const int neutral = 0;
-     int merge(int l, int r) { return l + r; }
- 
-     void dfs(int u, int p = -1) {
-         tin[u] = t++;
-         for (int i = 0; i < LG - 1; i++) {
-             up[u][i + 1] = up[up[u][i]][i];
-             st[u][i + 1] = merge(st[u][i], st[up[u][i]][i]);
-         }
-         for (auto [w, v] : adj[u])
-             if (v != p) {
-                 up[v][0] = u, st[v][0] = w;
-                 dfs(v, u);
-             }
-         tout[u] = t++;
-     }
- 
-     void build(int root, vector<vector<ii>>& adj2) {
-         t = 1;
-         N = size(adj2);
-         LG = 31 - __builtin_clz(N);
-         adj = adj2;
-         tin = tout = vector<int>(N);
-         up = st = vector (N, vector<int>(LG, neutral));
-         up[root][0] = root;
-         dfs(root);
-     }
- 
-     bool ancestor(int u, int v) { return tin[u] <= tin[v] && tout[u] >= tout[v]; }
- 
-     int query2(int u, int v) {
-         if (ancestor(u, v)) return neutral;
-         int ans = neutral;
-         for (int i = LG - 1; i >= 0; i--) {
-             if (!ancestor(up[u][i], v)) {
-                 ans = merge(ans, st[u][i]);
-                 u = up[u][i];
-             }
-         }
-         return merge(ans, st[u][0]);
-     }
- 
-     int query(int u, int v) {
-         if (u == v) return neutral;
- #warning TRATAR ESSE CASO ACIMA
-         return merge(query2(u, v), query2(v, u));
-     }
- } bl;
- 
-\end{lstlisting}
-
-\subsection{Binary Lifting para operacoes nao comutativas (em nodos)}
-\begin{lstlisting}
-// Nome auto explicativo
+// Esse resolve queries de operacoes nao comutativas
 // Levemente diferente do padrao
 //
 // Esse aqui resolve query de Kadani em arvore
@@ -1823,8 +1821,11 @@ basicstyle=\ttfamily\footnotesize, % fonte
  set ai
  set ts=4
  set sw=4
+ set so=10
  filetype plugin indent on
  inoremap {} {}<Left><Return><Up><End><Return> 
+ 
+ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
  
  set nohls
  set belloff=all

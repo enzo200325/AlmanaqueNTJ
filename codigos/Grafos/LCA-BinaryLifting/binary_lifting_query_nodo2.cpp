@@ -1,6 +1,6 @@
-// Binary Lifting para operacoes nao comutativas (em nodos)
+// Binary Lifting Query (em nodos)
 //
-// Nome auto explicativo
+// Esse resolve queries de operacoes nao comutativas
 // Levemente diferente do padrao
 //
 // Esse aqui resolve query de Kadani em arvore
