@@ -4,7 +4,7 @@
 using namespace std;
 
 string path = "../codigos/";
-string github_link= "https://github.com/enzo200325/AlmanaqueNTJ/blob/master";
+string github_link= "https://github.com/enzo200325/AlmanaqueNTJ/blob/main";
 
 string get_name(string file) {
 	ifstream fin(file.c_str());
