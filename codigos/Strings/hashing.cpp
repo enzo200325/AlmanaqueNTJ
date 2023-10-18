@@ -8,7 +8,6 @@
 
 // Hash com 1 mod
 
-typedef ll Hash;
 template <typename obj = string, typename T = ll, typename U = __int128_t> struct Hashing {
     int N;
     bool inverse = 0;
@@ -25,7 +24,7 @@ template <typename obj = string, typename T = ll, typename U = __int128_t> struc
             hsh[i] = (hsh[i - 1] * p + s[i]) % mod;
         }
     }
-    Hash operator()(int l, int r) {
+    ll operator()(int l, int r) {
         if (inverse) {
             l = N - 1 - l, r = N - 1 - r;
             swap(l, r);

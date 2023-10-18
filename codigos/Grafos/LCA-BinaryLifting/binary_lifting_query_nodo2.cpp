@@ -1,4 +1,4 @@
-// Binary Lifting Query (em nodos)
+// Binary Lifting Query 2 (em nodos)
 //
 // Esse resolve queries de operacoes nao comutativas
 // Levemente diferente do padrao
