@@ -34,7 +34,7 @@ Aqui está o `.pdf` do Almanaque.
 - [Suffix Automaton](https://github.com/enzo200325/AlmanaqueNTJ/blob/main/%63%6F%64%69%67%6F%73/%53%74%72%69%6E%67%73/%73%75%66%66%69%78%61%75%74%6F%6D%61%74%6F%6E.%63%70%70)
 - [Automato de Aho Corasick](https://github.com/enzo200325/AlmanaqueNTJ/blob/main/%63%6F%64%69%67%6F%73/%53%74%72%69%6E%67%73/%61%68%6F%63%6F%72%61%73%69%63%6B.%63%70%70)
 - [KMP](https://github.com/enzo200325/AlmanaqueNTJ/blob/main/%63%6F%64%69%67%6F%73/%53%74%72%69%6E%67%73/%6B%6D%70.%63%70%70)
-- [Hashing estatico e dinamico](https://github.com/enzo200325/AlmanaqueNTJ/blob/main/%63%6F%64%69%67%6F%73/%53%74%72%69%6E%67%73/%68%61%73%68%69%6E%67.%63%70%70)
+- [Hashing estatico (sem update)](https://github.com/enzo200325/AlmanaqueNTJ/blob/main/%63%6F%64%69%67%6F%73/%53%74%72%69%6E%67%73/%68%61%73%68%69%6E%67.%63%70%70)
 
 ### Problemas
 

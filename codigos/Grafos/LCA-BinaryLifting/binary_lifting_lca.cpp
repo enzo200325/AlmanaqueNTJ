@@ -15,9 +15,6 @@ struct BinaryLifting {
     vector<int> tin, tout;
     int N, LG, t;
 
-    const int neutral = 0;
-    int merge(int l, int r) { return l + r; }
-
     void dfs(int u, int p = -1) {
         tin[u] = t++;
         for (int i = 0; i < LG - 1; i++) up[u][i + 1] = up[up[u][i]][i];
@@ -28,10 +25,10 @@ struct BinaryLifting {
         tout[u] = t++;
     }
 
-    void build(int root, vector<vector<int>>& adj2) {
+    void build(int root, vector<vector<int>> adj2) {
         t = 1;
         N = size(adj2);
-        LG = 31 - __builtin_clz(N);
+        LG = 32 - __builtin_clz(N);
         adj = adj2;
         tin = tout = vector<int>(N);
         up = vector (N, vector<int>(LG));
