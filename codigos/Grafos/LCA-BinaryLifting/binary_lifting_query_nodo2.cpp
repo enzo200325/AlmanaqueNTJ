@@ -1,4 +1,4 @@
-// Binary Lifting Query (em nodos)
+// Binary Lifting Query 2 (em nodos)
 //
 // Esse resolve queries de operacoes nao comutativas
 // Levemente diferente do padrao
@@ -44,10 +44,10 @@ struct BinaryLifting {
         tout[u] = t++;
     }
 
-    void build(int root, vector<vector<int>> &adj2, vector<int> &v) {
+    void build(int root, vector<vector<int>> adj2, vector<int> v) {
         t = 1;
         N = size(adj2);
-        LG = 31 - __builtin_clz(N);
+        LG = 32 - __builtin_clz(N);
         adj = adj2;
         val = v;
         tin = tout = vector<int>(N);
