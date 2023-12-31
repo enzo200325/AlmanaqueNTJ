@@ -1,9 +1,11 @@
-// Hashing estatico (sem update)
+// Hashing dinamico (com update)
 // 
 // Usa o mint e rng()
+// Usa fenwick pra updatar
 //
 // Build: O(n)
-// Query: O(1)
+// Query: O(log(n))
+// Update: O(log(n))
 //
 // LEMBRAR DE CHAMAR O initPrime() !
 //
@@ -12,6 +14,7 @@
 
 const int mod1 = 998244353;
 const int mod2 = 1e9 + 7;
+
 using mint1 = Mint<mod1>;
 using mint2 = Mint<mod2>;
 using Hash = pair<mint1, mint2>;
@@ -29,7 +32,7 @@ Hash operator-(Hash a, Hash o) {
 const int ORD = 1e6;
 const int PRIME = ORD + (rng() % ORD); // nao necessariamente primo
 
-const int MAXN = 1e6 + 5;
+const int MAXN = 4e5 + 5;
 
 Hash P = {PRIME, PRIME};
 Hash invP = {mint1(1) / PRIME, mint2(1) / PRIME};
@@ -38,38 +41,48 @@ Hash p[MAXN], invp[MAXN];
 
 void initPrime() {
     p[0] = invp[0] = Hash(1, 1);
-    for (int i = 1; i < N; i++) {
+    for (int i = 1; i < MAXN; i++) {
         p[i] = p[i - 1] * P;
         invp[i] = invp[i - 1] * invP;
     }
 }
 
-template<typename obj = string> struct Hashing {
+template<typename obj = string> struct DynamicHashing {
     int N;
-    vector<Hash> hsh;
-    Hashing () {}
-    Hashing(obj s) : N(size(s)), hsh(N + 1) {
+    fenwick<Hash> hsh;
+    DynamicHashing () {}
+    DynamicHashing(obj s) : N(size(s)) {
+        vector<Hash> arr(N);
         for (int i = 0; i < N; i++) {
-            hsh[i + 1] = hsh[i] + (p[i + 1] * Hash(s[i], s[i]));
+            arr[i] = (p[i + 1] * Hash(s[i], s[i]));
         }
+        hsh = fenwick(arr);
     }
-    Hash operator()(int l, int r) const {
-        return (hsh[r + 1] - hsh[l]) * invp[l];
+    Hash operator()(int l, int r) {
+        return hsh.query(l, r) * invp[l];
+    }
+    void update(int i, char c) {
+        hsh.setUpdate(i, Hash(c, c) * p[i + 1]);
     }
 };
 
-template<typename obj = string> struct revHashing {
+template<typename obj = string> struct revDynamicHashing {
     // hash em que query(l, r) retorna o hash da substring de [l, r] invertida
     // util pra verificar palindromos e afins
     int N;
-    vector<Hash> hsh;
-    revHashing () {}
-    revHashing(obj s) : N(size(s)), hsh(N + 1) {
+    fenwick<Hash> hsh;
+    revDynamicHashing () {}
+    revDynamicHashing(obj s) : N(size(s)) {
+        vector<Hash> arr(N);
         for (int i = N - 1; i >= 0; i--) {
-            hsh[i] = hsh[i + 1] + (p[N - i] * Hash(s[i], s[i]));
+            arr[i] = (p[N - i] * Hash(s[i], s[i]));
         }
+        hsh = fenwick(arr);
     }
-    Hash operator()(int l, int r) const {
-        return (hsh[l] - hsh[r + 1]) * invp[N - r - 1];
+    Hash operator()(int l, int r) {
+        return hsh.query(l, r) * invp[N - r - 1];
+    }
+    void update(int i, char c) {
+        hsh.setUpdate(i, Hash(c, c) * p[N - i]);
     }
 };

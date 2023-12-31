@@ -63,4 +63,3 @@ struct BinaryLifting {
         return merge(query2(u, v), query2(v, u));
     }
 } bl;
-

@@ -10,7 +10,7 @@ template<int mod> struct Mint {
         for (res = 1; e; e >>= 1, b = b * b) if (e & 1) res = res * b;
         return res;
     }
-    bool operator==(Mint o) { return val == o.val; }
+    bool operator==(Mint o) const { return val == o.val; }
     bool operator<(Mint o) const { return val < o.val; }
     friend Mint operator*(Mint a, Mint o) { return (ll)a.val * o.val; }
     friend Mint operator+(Mint a, Mint o) {

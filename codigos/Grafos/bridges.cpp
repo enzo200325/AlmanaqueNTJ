@@ -8,11 +8,11 @@
 // Salva no vetor bridges os pares {u, v} cujas arestas sao pontes
 
 typedef pair<int, int> ii;
-const int maxn = 2e5 + 5;
+const int N = 2e5 + 5;
 int n, m;
-bool vis[maxn];
-int dp[maxn], dep[maxn];
-vector<int> adj[maxn];
+bool vis[N];
+int dp[N], dep[N];
+vector<int> adj[N];
 vector<ii> bridges;
 
 void dfs_dp(int u, int p = -1, int d = 0) {
@@ -43,8 +43,8 @@ void find_bridges() {
 
 // Edge Biconnected Components (requer todo codigo acima)
 
-int ebcc[maxn], ncc = 0;
-vector<int> adjbcc[maxn];
+int ebcc[N], ncc = 0;
+vector<int> adjbcc[N];
 
 void dfs_ebcc(int u, int p, int cc) {
     vis[u] = 1;
