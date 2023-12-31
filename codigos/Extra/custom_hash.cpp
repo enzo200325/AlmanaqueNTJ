@@ -1,7 +1,7 @@
 // Custom Hash
 //
 // Hash personalizado pra evitar colisao no unordered_map
-// Uso: map<int, int, custom_hash> mapa;
+// Uso: unordered_map<int, int, custom_hash> mapa;
 
 struct custom_hash {
     static uint64_t splitmix64(uint64_t x) {

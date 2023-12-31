@@ -27,7 +27,7 @@ namespace PollardRho {
     }
     // O(it * (logn)^3), it = number of rounds performed
     inline bool miller_rabin(ll n) {
-        if (n <= 2 || (n & 1 ^ 1)) return (n == 2);
+        if (n <= 2 || ((n & 1) ^ 1)) return (n == 2);
         if (n < P) return spf[n] == n;
         ll c, d, s = 0, r = n - 1;
         for (; !(r & 1); r >>= 1, s++) {
@@ -65,13 +65,13 @@ namespace PollardRho {
                 if ((x = *px++) == y) break;
                 v = u;
                 u = mul_mod(u, abs(y - x), n);
-                if (!u) return __gcd(v, n);
+                if (!u) return gcd(v, n);
                 if (++t == 32) {
                     t = 0;
-                    if ((u = __gcd(u, n)) > 1 && u < n) return u;
+                    if ((u = gcd(u, n)) > 1 && u < n) return u;
                 }
             }
-            if (t && (u = __gcd(u, n)) > 1 && u < n) return u;
+            if (t && (u = gcd(u, n)) > 1 && u < n) return u;
         }
     }
 

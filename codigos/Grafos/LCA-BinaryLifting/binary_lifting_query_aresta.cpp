@@ -32,10 +32,10 @@ struct BinaryLifting {
         tout[u] = t++;
     }
 
-    void build(int root, vector<vector<ii>>& adj2) {
+    void build(int root, vector<vector<ii>> adj2) {
         t = 1;
         N = size(adj2);
-        LG = 31 - __builtin_clz(N);
+        LG = 32 - __builtin_clz(N);
         adj = adj2;
         tin = tout = vector<int>(N);
         up = st = vector (N, vector<int>(LG, neutral));
@@ -63,4 +63,3 @@ struct BinaryLifting {
         return merge(query2(u, v), query2(v, u));
     }
 } bl;
-

@@ -2,28 +2,30 @@
 //
 // Inteiro automaticamente modulado
 
-const int mod = 998244353;
-
-struct mint {
+template<int mod> struct Mint {
     int val;
-    mint(ll v = 0) { val = v % mod; if (val < 0) val += mod; }
-    mint pwr(mint b, ll e) {
-        mint res;
+    Mint(ll v = 0) { val = v % mod; if (val < 0) val += mod; }
+    Mint pwr(Mint b, ll e) {
+        Mint res;
         for (res = 1; e; e >>= 1, b = b * b) if (e & 1) res = res * b;
         return res;
     }
-    bool operator==(mint o) { return val == o.val; }
-    friend mint operator*(mint a, mint o) { return (ll)a.val * o.val; }
-    friend mint operator+(mint a, mint o) {
+    bool operator==(Mint o) const { return val == o.val; }
+    bool operator<(Mint o) const { return val < o.val; }
+    friend Mint operator*(Mint a, Mint o) { return (ll)a.val * o.val; }
+    friend Mint operator+(Mint a, Mint o) {
         a.val += o.val;
         if (a.val >= mod) a.val -= mod;
         return a;
     }
-    friend mint operator-(mint a, mint o) {
+    friend Mint operator-(Mint a, Mint o) {
         a.val -= o.val;
         if (a.val < 0) a.val += mod;
         return a;
     }
-    friend mint operator^(mint a, ll o) { return a.pwr(a, o); }
-    friend mint operator/(mint a, mint o) { return a * (o ^ (mod - 2)); }
+    friend Mint operator^(Mint a, ll o) { return a.pwr(a, o); }
+    friend Mint operator/(Mint a, Mint o) { return a * (o ^ (mod - 2)); }
 };
+
+const int mod = 998244353;
+using mint = Mint<mod>;
